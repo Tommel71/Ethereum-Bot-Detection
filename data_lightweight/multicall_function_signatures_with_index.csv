@@ -1,0 +1,2 @@
+hex_signature_hash,text_signature,col_names,tablename,foreignkeys,added_columns
+0x472b43f3,"swapExactTokensForTokens(uint256,uint256,address[],address)","amountOut,amountInMax,path,to",multicall_swapExactTokensForTokens_ndl,"[{'column': 'to','table_foreign': 'accounts','column_foreign': 'address'}]","{'transactions':['from_address']}"

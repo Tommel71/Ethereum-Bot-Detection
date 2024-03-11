@@ -1,0 +1,19 @@
+annotatorA,annotatorB,reconciled
+trader,trading,Trader
+deposit wallet,deposit wallet,Deposit Wallet
+asd,parallelBot,ParallelBot
+asd2,casino,Gambling
+general,bot,General
+human,human,Human
+quant firm,quant firm,Quant Firm
+nft,dApp,NFT
+cex,exchange,CEX
+gamer,gamer,Gamer
+rollup,rollup,Rollup
+faucet like,moneyDistributor,Faucet-like
+mev,MEV,MEV
+sandwich,sandwich,Sandwich
+protocol,OracleBot,Protocol
+copytrader,copytrader,Copytrader
+block builder,flashbot,Block Builder
+arbitrage,arbitrage,Arbitrage

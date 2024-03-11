@@ -1,0 +1,8 @@
+,Short,Description
+0,t1,0.2 ≤ tx__custom__n_tx_per_block ≤ ∞
+1,t2,0 ≤ scb__eb__transfer__value__tvc ≤ 0.1 \& 0.01 ≤ tx__custom__n_tx_per_block ≤ ∞
+2,t3,0 ≤ tx__value__tvc ≤ 0.1 \& 0.01 ≤ tx__custom__n_tx_per_block ≤ ∞
+3,t4,0 ≤ tx__time__intime_sleeplessness ≤ 3600
+4,t5,0 ≤ tx__time__outtime_sleeplessness ≤ 21600
+5,t6,0 ≤ tx__time__intime_transaction_frequency ≤ 21600 \& 0.0001 ≤ tx__custom__n_tx_per_block ≤ ∞
+6,t7,0 ≤ tx__time__outtime_transaction_frequency ≤ 21600

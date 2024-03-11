@@ -1,0 +1,31 @@
+[General]
+run_name = "largesample3"
+PREFIX_DB = "E:/Masterthesis/largesample3"
+
+[Plotting]
+tick_size = 15
+label_size = 20
+title_size = 30
+fig_width = 20
+font_size = 16
+
+[Metadata]
+n_blocks = 100000
+
+[Aggregate]
+[Aggregate.tx_generic_cols]
+dist = ["transaction_type", "receipt_status"]
+stats = ["transaction_index_relative", "value", "gas", "gas_price"]
+
+[Heuristics]
+nafill="mean" # for GMM and UMAP
+
+[Heuristics.Deposit]
+receiver_average_blocks_per_tx_threshold=20
+top_percentage_receiver=0.01
+max_transfers_deposit=5
+
+[Clustering]
+algorithms = ["gmm", "xmeans"]
+nafills = ["mean", "-1"]
+preprocessings = ["non-UMAP", "UMAP"]

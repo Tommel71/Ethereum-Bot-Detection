@@ -1,0 +1,20 @@
+,Arbitrage,Arbitrage,Sandwich,Sandwich,Liquidation,Liquidation
+,Accuracy,N Samples,Accuracy,N Samples,Accuracy,N Samples
+EOA-Type,,,,,,
+Arbitrage,0.9182156133828996,269,1.0,1,0.0,0
+Human,0.8270676691729324,133,0.7067669172932332,133,1.0,57
+Deposit Wallet,1.0,34,1.0,34,1.0,18
+General,0.8076923076923077,26,0.7307692307692308,26,1.0,6
+CEX,1.0,25,1.0,25,1.0,8
+Copytrader,1.0,14,0.9285714285714286,14,1.0,7
+Trader,0.5833333333333333,12,0.33333333333333337,12,1.0,3
+MEV,0.875,8,0.5,8,1.0,4
+NFT,1.0,6,0.5,6,1.0,4
+Faucet-like,1.0,3,1.0,3,1.0,2
+Protocol,1.0,2,1.0,2,0.0,0
+Sandwich,0.5,2,0.8843283582089553,268,0.0,0
+Block Builder,1.0,1,1.0,1,0.0,0
+Gamer,0.0,1,0.0,1,1.0,1
+Quant Firm,1.0,1,1.0,1,1.0,1
+Rollup,1.0,1,0.0,1,0.0,0
+Liquidation,0.0,0,0.0,0,0.9459459459459459,111

@@ -1,0 +1,8 @@
+Short,Description
+T1,0.2 $\le$ tx__custom__n_tx_per_block $\le$ $\infty$
+T2,0 $\le$ scb__eb__transfer__value__tvc $\le$ 0.1 \& 0.01 $\le$ tx__custom__n_tx_per_block $\le$ $\infty$
+T3,0 $\le$ tx__value__tvc $\le$ 0.1 \& 0.01 $\le$ tx__custom__n_tx_per_block $\le$ $\infty$
+T4,0 $\le$ tx__time__intime_sleepiness $\le$ 3600
+T5,0 $\le$ tx__time__outtime_sleepiness $\le$ 21600
+T6,0.015 $\le$ tx__time__intime_transaction_frequency $\le$ $\infty$ \& 0.0001 $\le$ tx__custom__n_tx_per_block $\le$ $\infty$
+T7,0.01 $\le$ tx__time__outtime_transaction_frequency $\le$ $\infty$ \& 0.0001 $\le$ tx__custom__n_tx_per_block $\le$ $\infty$

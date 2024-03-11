@@ -1,0 +1,15 @@
+\begin{tabular}{lllrrr}
+\toprule
+       &    &      &  Purity &  Entropy &  Clusters \\
+Algorithm & Imputation & \thead{Dimension. \\Reduction} &         &          &           \\
+\midrule
+GMM & mean & non-UMAP &   0.770 &    0.725 &        15 \\
+       &    & UMAP &   0.704 &    0.763 &        30 \\
+       & -1 & non-UMAP &   0.674 &    0.783 &        16 \\
+       &    & UMAP &   0.674 &    0.810 &        30 \\
+xmeans & mean & non-UMAP &   0.796 &    0.654 &        30 \\
+       &    & UMAP &   0.689 &    0.807 &        30 \\
+       & -1 & non-UMAP &   0.707 &    0.751 &        30 \\
+       &    & UMAP &   0.667 &    0.822 &        30 \\
+\bottomrule
+\end{tabular}
