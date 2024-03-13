@@ -15,6 +15,4 @@ This repository has only been tested on Windows 10 but may also work Linux distr
 We use MEV-inspect https://github.com/flashbots/mev-inspect-py/tree/main/mev_inspect with slightly adapted code
 to work with data provided by graphsense-lib https://github.com/graphsense/graphsense-lib.
 
-# todo for faster checking of adequate data, we provide a sample of the data under XXXXTODOXXXX
-
-# populate requirements.txt
+Minimal example to demonstrate how to run the code is a WIP.
