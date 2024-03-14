@@ -1,0 +1,12 @@
+2024-03-14 01:24:17,662 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-03-14 01:24:17,721 - preprocessing - test - DEBUG - Added blocks to postgres
+2024-03-14 01:24:17,721 - preprocessing - test - DEBUG - Add transactions to postgres
+2024-03-14 01:24:17,769 - preprocessing - test - DEBUG - Added transactions to postgres
+2024-03-14 01:24:17,769 - preprocessing - test - DEBUG - Add logs to postgres
+2024-03-14 01:24:17,815 - preprocessing - test - DEBUG - Added logs to postgres
+2024-03-14 01:24:17,815 - preprocessing - test - DEBUG - Add codes to postgres
+2024-03-14 01:24:17,862 - preprocessing - test - DEBUG - Added codes to postgres
+2024-03-14 01:24:17,900 - preprocessing - test - DEBUG - Add indices
+2024-03-14 01:24:17,954 - preprocessing - test - DEBUG - Added indices
+2024-03-14 01:24:17,954 - preprocessing - test - DEBUG - Logs processing
+2024-03-14 01:24:19,523 - preprocessing - test - DEBUG - Postgres: CREATE TABLE

@@ -1,5 +1,4 @@
 from tools import load_configs, load_json, load_mapping
-from neo4j import GraphDatabase
 from tools import get_filehandler
 import os
 from tqdm import tqdm
@@ -64,7 +63,6 @@ class Preprocess:
         self.prefix_db = configs["General"]["PREFIX_DB"]
         self.mapping_events = load_mapping(prefix + "/data/event_signatures.csv")
         self.mapping_functions = load_mapping(prefix + "/data/signatures.csv")
-        self.neo4j_credentials = load_json(prefix + "/credentials/neo4j.json")
 
         # create logger that saves to prefix/logs
         self.logger = logging.getLogger("preprocessing")

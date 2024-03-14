@@ -65,7 +65,7 @@ def unpack_all(prefix):
 
     # codes is special because they are large and I want them to share a folder and not be repeated in all the dirs
     # also i need the same file for all the dirs, different to logs, blocks transactions
-    in_dir = f"{prefix_db}/../codes_for_large/"
+    in_dir = f"{prefix_db}/../codes/"
     out_dir = f"{base}/uncompressed/codes"
     unpack_from_gz(in_dir, out_dir)
 

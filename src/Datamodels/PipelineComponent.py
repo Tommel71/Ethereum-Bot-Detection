@@ -12,7 +12,6 @@ class PipelineComponent:
         self.postgres_credentials = load_json(prefix + f"/credentials/"
                                                        f"postgres/{self.configs['General']['run_name']}.json")
         self.prefix = prefix
-        self.neo4j_credentials = load_json(self.prefix + "/credentials/neo4j.json")
 
         self.logger = logging.getLogger(self.__class__.__name__)
         self.logger.setLevel(logging.DEBUG)

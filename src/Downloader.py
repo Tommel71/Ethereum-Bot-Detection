@@ -12,7 +12,6 @@ import pymongo
 import pandas as pd
 from tools import load_configs, flatten
 import requests
-from neo4j import GraphDatabase
 from tqdm import tqdm
 import concurrent.futures
 
@@ -27,7 +26,6 @@ class DownloadPipeline:
         blockrange = configs["Download"]["blockrange"]
         self.block_numbers_to_get = list(range(blockrange[0], blockrange[1]))
         credential_list = list(load_json(f"{self.prefix}/{self.PROVIDERS_PATH}").values())
-        self.neo4j_credentials = load_json(self.prefix + "/credentials/neo4j.json")
 
 
     def int_to_string(self, mapping, names):
@@ -121,13 +119,9 @@ class DownloadPipeline:
         self.client = pymongo.MongoClient()
         self.db = self.client[self.DB_NAME]
 
-        # Connect to the Neo4j database
-        self.driver = GraphDatabase.driver("neo4j://localhost:7687",
-                                           auth=(self.neo4j_credentials["user"], self.neo4j_credentials["password"]))
 
     def disconnect_databases(self):
         self.client.close()
-        self.driver.close()
 
     def execute(self):
         self.connect_databases()
