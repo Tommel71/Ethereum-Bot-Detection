@@ -1,6 +1,6 @@
 [General]
 run_name = "test"
-PREFIX_DB = "test_data" # source of data
+PREFIX_DB = "test_data/test_run" # source of data
 
 [Plotting]
 tick_size = 15
