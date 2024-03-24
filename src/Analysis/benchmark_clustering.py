@@ -63,7 +63,6 @@ def eval_clustering(clusters: pd.DataFrame, target: pd.DataFrame):
 
         mask = clusters['cluster_id'] == cluster_id
         target_cluster = target[mask]
-        # TODO perhaps have to adapt to a mean instead of just values matching
         # because there could be issues with class imbalance
         max_label = target_cluster['label'].value_counts().idxmax()
 

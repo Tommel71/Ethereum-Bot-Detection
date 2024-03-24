@@ -1,0 +1,409 @@
+2024-03-24 17:24:39,621 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 17:24:39,622 - Aggregate - test - DEBUG - Starting ETL
+2024-03-24 17:24:39,622 - Aggregate - test - DEBUG - Starting address_based_features
+2024-03-24 17:24:39,666 - Aggregate - test - DEBUG - Executing query 
+            SELECT address FROM accounts
+        
+2024-03-24 17:24:39,768 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:24:39,885 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:24:54,520 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:14.635275
+2024-03-24 17:24:54,551 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 17:25:09,202 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:14.650932
+2024-03-24 17:25:09,215 - Aggregate - test - DEBUG - Processing batch 2
+2024-03-24 17:25:22,207 - Aggregate - test - DEBUG - Saved batch 2 to DB in 0:00:12.991577
+2024-03-24 17:25:22,209 - Aggregate - test - DEBUG - Finished process_piecewise in 42.44091010093689 seconds
+2024-03-24 17:25:22,210 - Aggregate - test - DEBUG - Finished address_based_features in 42.5880446434021 seconds
+2024-03-24 17:25:22,210 - Aggregate - test - DEBUG - Starting tx_based_features
+2024-03-24 17:25:22,246 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.to_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.to_address
+        
+2024-03-24 17:25:22,815 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:25:23,353 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:25:42,629 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.276028
+2024-03-24 17:25:42,649 - Aggregate - test - DEBUG - Finished process_piecewise in 19.834235668182373 seconds
+2024-03-24 17:25:42,686 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.from_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.from_address
+        
+2024-03-24 17:25:43,387 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:25:43,992 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:26:05,257 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:21.266118
+2024-03-24 17:26:05,368 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 17:26:20,441 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:15.072704
+2024-03-24 17:26:20,452 - Aggregate - test - DEBUG - Finished process_piecewise in 37.0644805431366 seconds
+2024-03-24 17:26:20,490 - Aggregate - test - DEBUG - Executing query 
+            SELECT from_address as address, array_agg(value) AS series
+            FROM transactions
+            GROUP BY from_address
+        
+2024-03-24 17:26:21,222 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:26:22,333 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:26:42,803 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.470473
+2024-03-24 17:26:43,046 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 17:26:58,008 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:14.961515
+2024-03-24 17:26:58,020 - Aggregate - test - DEBUG - Finished process_piecewise in 36.799227476119995 seconds
+2024-03-24 17:26:58,054 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.from_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.from_address
+        
+2024-03-24 17:26:58,731 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:26:59,275 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:27:18,586 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.311652
+2024-03-24 17:27:18,946 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 17:27:33,627 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:14.680345
+2024-03-24 17:27:33,637 - Aggregate - test - DEBUG - Finished process_piecewise in 34.90582823753357 seconds
+2024-03-24 17:27:33,675 - Aggregate - test - DEBUG - Executing query 
+            SELECT from_address as address, array_agg(transaction_type) AS transaction_type, array_agg(receipt_status) AS receipt_status, array_agg(transaction_index_relative) AS transaction_index_relative, array_agg(value) AS value, array_agg(gas) AS gas, array_agg(gas_price) AS gas_price FROM transactions
+            GROUP BY from_address
+        
+2024-03-24 17:27:36,405 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:27:39,654 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:28:20,809 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:41.154501
+2024-03-24 17:28:21,978 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 17:28:42,935 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:20.957086
+2024-03-24 17:28:42,981 - Aggregate - test - DEBUG - Finished process_piecewise in 66.57564616203308 seconds
+2024-03-24 17:28:42,981 - Aggregate - test - DEBUG - Finished tx_based_features in 200.77111649513245 seconds
+2024-03-24 17:28:42,981 - Aggregate - test - DEBUG - Starting function_based_features
+2024-03-24 17:28:42,991 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokens
+2024-03-24 17:28:43,027 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokens" as t GROUP BY from_address
+2024-03-24 17:28:43,036 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:28:43,084 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:28:55,456 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.371772
+2024-03-24 17:28:55,458 - Aggregate - test - DEBUG - Finished process_piecewise in 12.421820163726807 seconds
+2024-03-24 17:28:55,458 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokens_ndl
+2024-03-24 17:28:55,493 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokens_ndl" as t GROUP BY from_address
+2024-03-24 17:28:55,495 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:28:55,533 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:29:07,768 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.234930
+2024-03-24 17:29:07,769 - Aggregate - test - DEBUG - Finished process_piecewise in 12.273966789245605 seconds
+2024-03-24 17:29:07,770 - Aggregate - test - DEBUG - Grouping data for table swapTokensForExactTokens
+2024-03-24 17:29:07,808 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapTokensForExactTokens" as t GROUP BY from_address
+2024-03-24 17:29:07,811 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:29:07,850 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:29:19,855 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.004915
+2024-03-24 17:29:19,856 - Aggregate - test - DEBUG - Finished process_piecewise in 12.044949769973755 seconds
+2024-03-24 17:29:19,856 - Aggregate - test - DEBUG - Grouping data for table swapExactETHForTokens
+2024-03-24 17:29:19,891 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactETHForTokens" as t GROUP BY from_address
+2024-03-24 17:29:19,901 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:29:19,944 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:29:32,116 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.172484
+2024-03-24 17:29:32,117 - Aggregate - test - DEBUG - Finished process_piecewise in 12.21652603149414 seconds
+2024-03-24 17:29:32,117 - Aggregate - test - DEBUG - Grouping data for table swapTokensForExactETH
+2024-03-24 17:29:32,151 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapTokensForExactETH" as t GROUP BY from_address
+2024-03-24 17:29:32,153 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:29:32,191 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:29:44,157 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:11.965881
+2024-03-24 17:29:44,157 - Aggregate - test - DEBUG - Finished process_piecewise in 12.003915071487427 seconds
+2024-03-24 17:29:44,158 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForETH
+2024-03-24 17:29:44,191 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForETH" as t GROUP BY from_address
+2024-03-24 17:29:44,197 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:29:44,244 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:29:56,347 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.102848
+2024-03-24 17:29:56,348 - Aggregate - test - DEBUG - Finished process_piecewise in 12.150892972946167 seconds
+2024-03-24 17:29:56,348 - Aggregate - test - DEBUG - Grouping data for table swapETHForExactTokens
+2024-03-24 17:29:56,381 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapETHForExactTokens" as t GROUP BY from_address
+2024-03-24 17:29:56,385 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:29:56,426 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:30:08,380 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:11.953908
+2024-03-24 17:30:08,381 - Aggregate - test - DEBUG - Finished process_piecewise in 11.995948553085327 seconds
+2024-03-24 17:30:08,381 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-03-24 17:30:08,416 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokensSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 17:30:08,420 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:30:08,462 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:30:20,371 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:11.908629
+2024-03-24 17:30:20,372 - Aggregate - test - DEBUG - Finished process_piecewise in 11.95167064666748 seconds
+2024-03-24 17:30:20,372 - Aggregate - test - DEBUG - Grouping data for table swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-03-24 17:30:20,406 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactETHForTokensSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 17:30:20,409 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:30:20,448 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:30:32,365 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:11.916798
+2024-03-24 17:30:32,366 - Aggregate - test - DEBUG - Finished process_piecewise in 11.95683479309082 seconds
+2024-03-24 17:30:32,366 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-03-24 17:30:32,399 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForETHSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 17:30:32,407 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:30:32,453 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:30:44,636 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:12.182411
+2024-03-24 17:30:44,637 - Aggregate - test - DEBUG - Finished process_piecewise in 12.229835033416748 seconds
+2024-03-24 17:30:44,637 - Aggregate - test - DEBUG - Grouping data for table multicall_swapExactTokensForTokens_ndl
+2024-03-24 17:30:44,670 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."multicall_swapExactTokensForTokens_ndl" as t GROUP BY from_address
+2024-03-24 17:30:44,726 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:30:44,828 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:30:58,119 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:13.291085
+2024-03-24 17:30:58,123 - Aggregate - test - DEBUG - Finished process_piecewise in 13.397179365158081 seconds
+2024-03-24 17:30:58,671 - Aggregate - test - DEBUG - Finished function_based_features in 135.68960547447205 seconds
+2024-03-24 17:30:58,671 - Aggregate - test - DEBUG - Starting event_based_features
+2024-03-24 17:30:58,671 - Aggregate - test - DEBUG - Grouping data for table transferErc20
+2024-03-24 17:30:58,704 - Aggregate - test - DEBUG - Executing query SELECT t.from as address, array_agg(t."value") as value FROM public."transferErc20" as t GROUP BY t.from
+2024-03-24 17:30:59,073 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:31:00,242 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:31:20,563 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.321333
+2024-03-24 17:31:20,591 - Aggregate - test - DEBUG - Finished process_piecewise in 21.518419981002808 seconds
+2024-03-24 17:31:20,591 - Aggregate - test - DEBUG - Grouping data for table swap
+2024-03-24 17:31:20,625 - Aggregate - test - DEBUG - Executing query 
+        SELECT address, array_agg(z.amountIn) as amountIn
+        FROM (
+            SELECT t.to as address, t."amount0In" + t."amount1In" as amountIn 
+            FROM public."swap" as t
+            UNION
+            SELECT t.recipient as address, GREATEST(t."amount0", t."amount1") as amountIn
+            FROM public."swapV3" as t
+        ) as z
+        GROUP BY address;
+        
+2024-03-24 17:31:20,710 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 17:31:21,104 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 17:31:34,364 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:13.260037
+2024-03-24 17:31:34,371 - Aggregate - test - DEBUG - Finished process_piecewise in 13.660401821136475 seconds
+2024-03-24 17:31:34,371 - Aggregate - test - DEBUG - Finished event_based_features in 35.700148582458496 seconds
+2024-03-24 17:31:34,371 - Aggregate - test - DEBUG - Starting merge_dfs_on_address_DB
+2024-03-24 17:31:34,441 - Aggregate - test - DEBUG - CREATE INDEX address_based_features_address_index ON address_based_features (address);
+CREATE INDEX tx_time_based_in_features_address_index ON tx_time_based_in_features (address);
+CREATE INDEX tx_time_based_out_features_address_index ON tx_time_based_out_features (address);
+CREATE INDEX tx_value_based_features_address_index ON tx_value_based_features (address);
+CREATE INDEX tx_generic_features_address_index ON tx_generic_features (address);
+CREATE INDEX tx_custom_features_address_index ON tx_custom_features (address);
+CREATE INDEX swap_features_address_index ON swap_features (address);
+CREATE INDEX ev_erc20_based_features_address_index ON ev_erc20_based_features (address);
+CREATE INDEX ev_swap_based_features_address_index ON ev_swap_based_features (address);
+2024-03-24 17:31:34,441 - Aggregate - test - DEBUG - SELECT accounts.address, address_based_features.address__starting_zeros, address_based_features.address__0, address_based_features.address__1, address_based_features.address__2, address_based_features.address__3, address_based_features.address__4, address_based_features.address__5, address_based_features.address__6, address_based_features.address__7, address_based_features.address__8, address_based_features.address__9, address_based_features.address__a, address_based_features.address__b, address_based_features.address__c, address_based_features.address__d, address_based_features.address__e, address_based_features.address__f, tx_time_based_in_features.tx__time__intime_sleepiness, tx_time_based_in_features.tx__time__intime_transaction_frequency, tx_time_based_in_features.tx__time__intime_hourly_entropy, tx_time_based_in_features.tx__time__intime_mean, tx_time_based_in_features.tx__time__intime_median, tx_time_based_in_features.tx__time__intime_std, tx_time_based_in_features.tx__time__intime_min, tx_time_based_in_features.tx__time__intime_max, tx_time_based_in_features.tx__time__intime_quantile_95, tx_time_based_out_features.tx__time__outtime_sleepiness, tx_time_based_out_features.tx__time__outtime_transaction_frequency, tx_time_based_out_features.tx__time__outtime_hourly_entropy, tx_time_based_out_features.tx__time__outtime_mean, tx_time_based_out_features.tx__time__outtime_median, tx_time_based_out_features.tx__time__outtime_std, tx_time_based_out_features.tx__time__outtime_min, tx_time_based_out_features.tx__time__outtime_max, tx_time_based_out_features.tx__time__outtime_quantile_95, tx_value_based_features.tx__value__tvc, tx_value_based_features.tx__value__benfords, tx_generic_features.tx__generic__transaction_type_0, tx_generic_features.tx__generic__transaction_type_1, tx_generic_features.tx__generic__transaction_type_2, tx_generic_features.tx__generic__transaction_type_entropy, tx_generic_features.tx__generic__transaction_type_mode, tx_generic_features.tx__generic__receipt_status_0, tx_generic_features.tx__generic__receipt_status_1, tx_generic_features.tx__generic__receipt_status_entropy, tx_generic_features.tx__generic__receipt_status_mode, tx_generic_features.tx__generic__transaction_index_relative_mean, tx_generic_features.tx__generic__transaction_index_relative_median, tx_generic_features.tx__generic__transaction_index_relative_std, tx_generic_features.tx__generic__transaction_index_relative_min, tx_generic_features.tx__generic__transaction_index_relative_max, tx_generic_features.tx__generic__transaction_index_relative_quantile_95, tx_generic_features.tx__generic__value_mean, tx_generic_features.tx__generic__value_median, tx_generic_features.tx__generic__value_std, tx_generic_features.tx__generic__value_min, tx_generic_features.tx__generic__value_max, tx_generic_features.tx__generic__value_quantile_95, tx_generic_features.tx__generic__gas_mean, tx_generic_features.tx__generic__gas_median, tx_generic_features.tx__generic__gas_std, tx_generic_features.tx__generic__gas_min, tx_generic_features.tx__generic__gas_max, tx_generic_features.tx__generic__gas_quantile_95, tx_generic_features.tx__generic__gas_price_mean, tx_generic_features.tx__generic__gas_price_median, tx_generic_features.tx__generic__gas_price_std, tx_generic_features.tx__generic__gas_price_min, tx_generic_features.tx__generic__gas_price_max, tx_generic_features.tx__generic__gas_price_quantile_95, tx_custom_features.tx__custom__n_tx_per_block, tx_custom_features.tx__custom__tx_per_active_block_mean, tx_custom_features.tx__custom__tx_per_active_block_median, tx_custom_features.tx__custom__tx_per_active_block_std, tx_custom_features.tx__custom__tx_per_active_block_min, tx_custom_features.tx__custom__tx_per_active_block_max, tx_custom_features.tx__custom__tx_per_active_block_quantile_95, swap_features.scb__sb__0__swaps_per_block, swap_features.scb__sb__1__amountin__benfords, swap_features.scb__sb__1__amountin__tvc, swap_features.scb__sb__1__amountin__mean, swap_features.scb__sb__1__amountin__median, swap_features.scb__sb__1__amountin__std, swap_features.scb__sb__1__amountin__min, swap_features.scb__sb__1__amountin__max, swap_features.scb__sb__1__amountin__quantile_95, swap_features.scb__sb__1__amountoutmin__benfords, swap_features.scb__sb__1__amountoutmin__tvc, swap_features.scb__sb__1__amountoutmin__mean, swap_features.scb__sb__1__amountoutmin__median, swap_features.scb__sb__1__amountoutmin__std, swap_features.scb__sb__1__amountoutmin__min, swap_features.scb__sb__1__amountoutmin__max, swap_features.scb__sb__1__amountoutmin__quantile_95, swap_features.scb__sb__1__pathlength__mean, swap_features.scb__sb__1__pathlength__median, swap_features.scb__sb__1__pathlength__std, swap_features.scb__sb__1__pathlength__min, swap_features.scb__sb__1__pathlength__max, swap_features.scb__sb__1__pathlength__quantile_95, swap_features.scb__sb__1__swaps_per_block, swap_features.scb__sb__2__amountout__benfords, swap_features.scb__sb__2__amountout__tvc, swap_features.scb__sb__2__amountout__mean, swap_features.scb__sb__2__amountout__median, swap_features.scb__sb__2__amountout__std, swap_features.scb__sb__2__amountout__min, swap_features.scb__sb__2__amountout__max, swap_features.scb__sb__2__amountout__quantile_95, swap_features.scb__sb__2__amountinmax__benfords, swap_features.scb__sb__2__amountinmax__tvc, swap_features.scb__sb__2__amountinmax__mean, swap_features.scb__sb__2__amountinmax__median, swap_features.scb__sb__2__amountinmax__std, swap_features.scb__sb__2__amountinmax__min, swap_features.scb__sb__2__amountinmax__max, swap_features.scb__sb__2__amountinmax__quantile_95, swap_features.scb__sb__2__pathlength__mean, swap_features.scb__sb__2__pathlength__median, swap_features.scb__sb__2__pathlength__std, swap_features.scb__sb__2__pathlength__min, swap_features.scb__sb__2__pathlength__max, swap_features.scb__sb__2__pathlength__quantile_95, swap_features.scb__sb__2__swaps_per_block, swap_features.scb__sb__3__amountout__benfords, swap_features.scb__sb__3__amountout__tvc, swap_features.scb__sb__3__amountout__mean, swap_features.scb__sb__3__amountout__median, swap_features.scb__sb__3__amountout__std, swap_features.scb__sb__3__amountout__min, swap_features.scb__sb__3__amountout__max, swap_features.scb__sb__3__amountout__quantile_95, swap_features.scb__sb__3__amountinmax__benfords, swap_features.scb__sb__3__amountinmax__tvc, swap_features.scb__sb__3__amountinmax__mean, swap_features.scb__sb__3__amountinmax__median, swap_features.scb__sb__3__amountinmax__std, swap_features.scb__sb__3__amountinmax__min, swap_features.scb__sb__3__amountinmax__max, swap_features.scb__sb__3__amountinmax__quantile_95, swap_features.scb__sb__3__pathlength__mean, swap_features.scb__sb__3__pathlength__median, swap_features.scb__sb__3__pathlength__std, swap_features.scb__sb__3__pathlength__min, swap_features.scb__sb__3__pathlength__max, swap_features.scb__sb__3__pathlength__quantile_95, swap_features.scb__sb__3__swaps_per_block, swap_features.scb__sb__4__amountoutmin__benfords, swap_features.scb__sb__4__amountoutmin__tvc, swap_features.scb__sb__4__amountoutmin__mean, swap_features.scb__sb__4__amountoutmin__median, swap_features.scb__sb__4__amountoutmin__std, swap_features.scb__sb__4__amountoutmin__min, swap_features.scb__sb__4__amountoutmin__max, swap_features.scb__sb__4__amountoutmin__quantile_95, swap_features.scb__sb__4__pathlength__mean, swap_features.scb__sb__4__pathlength__median, swap_features.scb__sb__4__pathlength__std, swap_features.scb__sb__4__pathlength__min, swap_features.scb__sb__4__pathlength__max, swap_features.scb__sb__4__pathlength__quantile_95, swap_features.scb__sb__4__swaps_per_block, swap_features.scb__sb__5__amountout__benfords, swap_features.scb__sb__5__amountout__tvc, swap_features.scb__sb__5__amountout__mean, swap_features.scb__sb__5__amountout__median, swap_features.scb__sb__5__amountout__std, swap_features.scb__sb__5__amountout__min, swap_features.scb__sb__5__amountout__max, swap_features.scb__sb__5__amountout__quantile_95, swap_features.scb__sb__5__amountinmax__benfords, swap_features.scb__sb__5__amountinmax__tvc, swap_features.scb__sb__5__amountinmax__mean, swap_features.scb__sb__5__amountinmax__median, swap_features.scb__sb__5__amountinmax__std, swap_features.scb__sb__5__amountinmax__min, swap_features.scb__sb__5__amountinmax__max, swap_features.scb__sb__5__amountinmax__quantile_95, swap_features.scb__sb__5__pathlength__mean, swap_features.scb__sb__5__pathlength__median, swap_features.scb__sb__5__pathlength__std, swap_features.scb__sb__5__pathlength__min, swap_features.scb__sb__5__pathlength__max, swap_features.scb__sb__5__pathlength__quantile_95, swap_features.scb__sb__5__swaps_per_block, swap_features.scb__sb__6__amountin__benfords, swap_features.scb__sb__6__amountin__tvc, swap_features.scb__sb__6__amountin__mean, swap_features.scb__sb__6__amountin__median, swap_features.scb__sb__6__amountin__std, swap_features.scb__sb__6__amountin__min, swap_features.scb__sb__6__amountin__max, swap_features.scb__sb__6__amountin__quantile_95, swap_features.scb__sb__6__amountoutmin__benfords, swap_features.scb__sb__6__amountoutmin__tvc, swap_features.scb__sb__6__amountoutmin__mean, swap_features.scb__sb__6__amountoutmin__median, swap_features.scb__sb__6__amountoutmin__std, swap_features.scb__sb__6__amountoutmin__min, swap_features.scb__sb__6__amountoutmin__max, swap_features.scb__sb__6__amountoutmin__quantile_95, swap_features.scb__sb__6__pathlength__mean, swap_features.scb__sb__6__pathlength__median, swap_features.scb__sb__6__pathlength__std, swap_features.scb__sb__6__pathlength__min, swap_features.scb__sb__6__pathlength__max, swap_features.scb__sb__6__pathlength__quantile_95, swap_features.scb__sb__6__swaps_per_block, swap_features.scb__sb__7__amountout__benfords, swap_features.scb__sb__7__amountout__tvc, swap_features.scb__sb__7__amountout__mean, swap_features.scb__sb__7__amountout__median, swap_features.scb__sb__7__amountout__std, swap_features.scb__sb__7__amountout__min, swap_features.scb__sb__7__amountout__max, swap_features.scb__sb__7__amountout__quantile_95, swap_features.scb__sb__7__pathlength__mean, swap_features.scb__sb__7__pathlength__median, swap_features.scb__sb__7__pathlength__std, swap_features.scb__sb__7__pathlength__min, swap_features.scb__sb__7__pathlength__max, swap_features.scb__sb__7__pathlength__quantile_95, swap_features.scb__sb__7__swaps_per_block, swap_features.scb__sb__8__amountin__benfords, swap_features.scb__sb__8__amountin__tvc, swap_features.scb__sb__8__amountin__mean, swap_features.scb__sb__8__amountin__median, swap_features.scb__sb__8__amountin__std, swap_features.scb__sb__8__amountin__min, swap_features.scb__sb__8__amountin__max, swap_features.scb__sb__8__amountin__quantile_95, swap_features.scb__sb__8__amountoutmin__benfords, swap_features.scb__sb__8__amountoutmin__tvc, swap_features.scb__sb__8__amountoutmin__mean, swap_features.scb__sb__8__amountoutmin__median, swap_features.scb__sb__8__amountoutmin__std, swap_features.scb__sb__8__amountoutmin__min, swap_features.scb__sb__8__amountoutmin__max, swap_features.scb__sb__8__amountoutmin__quantile_95, swap_features.scb__sb__8__pathlength__mean, swap_features.scb__sb__8__pathlength__median, swap_features.scb__sb__8__pathlength__std, swap_features.scb__sb__8__pathlength__min, swap_features.scb__sb__8__pathlength__max, swap_features.scb__sb__8__pathlength__quantile_95, swap_features.scb__sb__8__swaps_per_block, swap_features.scb__sb__9__amountoutmin__benfords, swap_features.scb__sb__9__amountoutmin__tvc, swap_features.scb__sb__9__amountoutmin__mean, swap_features.scb__sb__9__amountoutmin__median, swap_features.scb__sb__9__amountoutmin__std, swap_features.scb__sb__9__amountoutmin__min, swap_features.scb__sb__9__amountoutmin__max, swap_features.scb__sb__9__amountoutmin__quantile_95, swap_features.scb__sb__9__pathlength__mean, swap_features.scb__sb__9__pathlength__median, swap_features.scb__sb__9__pathlength__std, swap_features.scb__sb__9__pathlength__min, swap_features.scb__sb__9__pathlength__max, swap_features.scb__sb__9__pathlength__quantile_95, swap_features.scb__sb__9__swaps_per_block, swap_features.scb__sb__10__amountin__benfords, swap_features.scb__sb__10__amountin__tvc, swap_features.scb__sb__10__amountin__mean, swap_features.scb__sb__10__amountin__median, swap_features.scb__sb__10__amountin__std, swap_features.scb__sb__10__amountin__min, swap_features.scb__sb__10__amountin__max, swap_features.scb__sb__10__amountin__quantile_95, swap_features.scb__sb__10__amountoutmin__benfords, swap_features.scb__sb__10__amountoutmin__tvc, swap_features.scb__sb__10__amountoutmin__mean, swap_features.scb__sb__10__amountoutmin__median, swap_features.scb__sb__10__amountoutmin__std, swap_features.scb__sb__10__amountoutmin__min, swap_features.scb__sb__10__amountoutmin__max, swap_features.scb__sb__10__amountoutmin__quantile_95, swap_features.scb__sb__10__pathlength__mean, swap_features.scb__sb__10__pathlength__median, swap_features.scb__sb__10__pathlength__std, swap_features.scb__sb__10__pathlength__min, swap_features.scb__sb__10__pathlength__max, swap_features.scb__sb__10__pathlength__quantile_95, swap_features.scb__sb__10__swaps_per_block, swap_features.scb__sb__0__amountout__benfords, swap_features.scb__sb__0__amountout__tvc, swap_features.scb__sb__0__amountout__mean, swap_features.scb__sb__0__amountout__median, swap_features.scb__sb__0__amountout__std, swap_features.scb__sb__0__amountout__min, swap_features.scb__sb__0__amountout__max, swap_features.scb__sb__0__amountout__quantile_95, swap_features.scb__sb__0__amountinmax__benfords, swap_features.scb__sb__0__amountinmax__tvc, swap_features.scb__sb__0__amountinmax__mean, swap_features.scb__sb__0__amountinmax__median, swap_features.scb__sb__0__amountinmax__std, swap_features.scb__sb__0__amountinmax__min, swap_features.scb__sb__0__amountinmax__max, swap_features.scb__sb__0__amountinmax__quantile_95, swap_features.scb__sb__0__pathlength__mean, swap_features.scb__sb__0__pathlength__median, swap_features.scb__sb__0__pathlength__std, swap_features.scb__sb__0__pathlength__min, swap_features.scb__sb__0__pathlength__max, swap_features.scb__sb__0__pathlength__quantile_95, ev_erc20_based_features.scb__eb__transfer__transfers_per_block, ev_erc20_based_features.scb__eb__transfer__value__benfords, ev_erc20_based_features.scb__eb__transfer__value__tvc, ev_erc20_based_features.scb__eb__transfer__value__mean, ev_erc20_based_features.scb__eb__transfer__value__median, ev_erc20_based_features.scb__eb__transfer__value__std, ev_erc20_based_features.scb__eb__transfer__value__min, ev_erc20_based_features.scb__eb__transfer__value__max, ev_erc20_based_features.scb__eb__transfer__value__quantile_95, ev_swap_based_features.scb__eb__swap__swaps_per_block, ev_swap_based_features.scb__eb__swap__amountin__benfords, ev_swap_based_features.scb__eb__swap__amountin__tvc, ev_swap_based_features.scb__eb__swap__amountin__mean, ev_swap_based_features.scb__eb__swap__amountin__median, ev_swap_based_features.scb__eb__swap__amountin__std, ev_swap_based_features.scb__eb__swap__amountin__min, ev_swap_based_features.scb__eb__swap__amountin__max, ev_swap_based_features.scb__eb__swap__amountin__quantile_95 FROM accounts LEFT JOIN address_based_features ON address_based_features.address = accounts.address LEFT JOIN tx_time_based_in_features ON tx_time_based_in_features.address = accounts.address LEFT JOIN tx_time_based_out_features ON tx_time_based_out_features.address = accounts.address LEFT JOIN tx_value_based_features ON tx_value_based_features.address = accounts.address LEFT JOIN tx_generic_features ON tx_generic_features.address = accounts.address LEFT JOIN tx_custom_features ON tx_custom_features.address = accounts.address LEFT JOIN swap_features ON swap_features.address = accounts.address LEFT JOIN ev_erc20_based_features ON ev_erc20_based_features.address = accounts.address LEFT JOIN ev_swap_based_features ON ev_swap_based_features.address = accounts.address
+2024-03-24 17:31:41,115 - Aggregate - test - DEBUG - Finished merge_dfs_on_address_DB in 6.744119882583618 seconds
+2024-03-24 17:31:41,115 - Aggregate - test - DEBUG - Finished ETL in 421.4930350780487 seconds
+2024-03-24 17:37:16,416 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:09:00,474 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:09:00,475 - Aggregate - test - DEBUG - Starting ETL
+2024-03-24 18:09:00,475 - Aggregate - test - DEBUG - Starting address_based_features
+2024-03-24 18:09:00,511 - Aggregate - test - DEBUG - Executing query 
+            SELECT address FROM accounts
+        
+2024-03-24 18:09:00,598 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:09:00,663 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:09:54,649 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:53.985290
+2024-03-24 18:09:54,917 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 18:10:16,652 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:21.735256
+2024-03-24 18:10:16,663 - Aggregate - test - DEBUG - Processing batch 2
+2024-03-24 18:10:36,907 - Aggregate - test - DEBUG - Saved batch 2 to DB in 0:00:20.243819
+2024-03-24 18:10:36,913 - Aggregate - test - DEBUG - Finished process_piecewise in 96.31468391418457 seconds
+2024-03-24 18:10:36,913 - Aggregate - test - DEBUG - Finished address_based_features in 96.43779587745667 seconds
+2024-03-24 18:10:36,913 - Aggregate - test - DEBUG - Starting tx_based_features
+2024-03-24 18:10:36,947 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.to_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.to_address
+        
+2024-03-24 18:10:37,514 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:10:37,878 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:11:06,425 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:28.546279
+2024-03-24 18:11:06,440 - Aggregate - test - DEBUG - Finished process_piecewise in 28.926625728607178 seconds
+2024-03-24 18:11:06,476 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.from_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.from_address
+        
+2024-03-24 18:11:07,154 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:11:07,836 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:11:38,078 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:30.241630
+2024-03-24 18:11:38,197 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 18:12:01,210 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:23.013571
+2024-03-24 18:12:01,228 - Aggregate - test - DEBUG - Finished process_piecewise in 54.07494378089905 seconds
+2024-03-24 18:12:01,262 - Aggregate - test - DEBUG - Executing query 
+            SELECT from_address as address, array_agg(value) AS series
+            FROM transactions
+            GROUP BY from_address
+        
+2024-03-24 18:12:01,942 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:12:03,102 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:13:16,070 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:01:12.967732
+2024-03-24 18:13:16,320 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 18:13:39,578 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:23.257589
+2024-03-24 18:13:39,605 - Aggregate - test - DEBUG - Finished process_piecewise in 97.66262531280518 seconds
+2024-03-24 18:13:39,643 - Aggregate - test - DEBUG - Executing query 
+            SELECT t.from_address as address, array_agg(b.timestamp) AS series
+            FROM transactions t
+            JOIN blocks b ON t.block_id = b.block_id
+            GROUP BY t.from_address
+        
+2024-03-24 18:13:40,339 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:13:41,025 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:14:09,496 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:28.470741
+2024-03-24 18:14:09,620 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 18:14:32,192 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:22.572460
+2024-03-24 18:14:32,211 - Aggregate - test - DEBUG - Finished process_piecewise in 51.871952295303345 seconds
+2024-03-24 18:14:32,246 - Aggregate - test - DEBUG - Executing query 
+            SELECT from_address as address, array_agg(transaction_type) AS transaction_type, array_agg(receipt_status) AS receipt_status, array_agg(transaction_index_relative) AS transaction_index_relative, array_agg(value) AS value, array_agg(gas) AS gas, array_agg(gas_price) AS gas_price FROM transactions
+            GROUP BY from_address
+        
+2024-03-24 18:14:34,891 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:14:38,650 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:15:34,713 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:56.062410
+2024-03-24 18:15:35,954 - Aggregate - test - DEBUG - Processing batch 1
+2024-03-24 18:16:07,114 - Aggregate - test - DEBUG - Saved batch 1 to DB in 0:00:31.161307
+2024-03-24 18:16:07,234 - Aggregate - test - DEBUG - Finished process_piecewise in 92.3433690071106 seconds
+2024-03-24 18:16:07,234 - Aggregate - test - DEBUG - Finished tx_based_features in 330.32093238830566 seconds
+2024-03-24 18:16:07,235 - Aggregate - test - DEBUG - Starting function_based_features
+2024-03-24 18:16:07,246 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokens
+2024-03-24 18:16:07,281 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokens" as t GROUP BY from_address
+2024-03-24 18:16:07,291 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:16:07,340 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:21:01,340 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:04:53.999364
+2024-03-24 18:21:01,342 - Aggregate - test - DEBUG - Finished process_piecewise in 294.0514030456543 seconds
+2024-03-24 18:21:01,343 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokens_ndl
+2024-03-24 18:21:01,381 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokens_ndl" as t GROUP BY from_address
+2024-03-24 18:21:01,383 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:21:01,426 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:21:21,233 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.806203
+2024-03-24 18:21:21,234 - Aggregate - test - DEBUG - Finished process_piecewise in 19.850242137908936 seconds
+2024-03-24 18:21:21,235 - Aggregate - test - DEBUG - Grouping data for table swapTokensForExactTokens
+2024-03-24 18:21:21,272 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapTokensForExactTokens" as t GROUP BY from_address
+2024-03-24 18:21:21,275 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:21:21,318 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:21:41,448 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.130600
+2024-03-24 18:21:41,450 - Aggregate - test - DEBUG - Finished process_piecewise in 20.17564058303833 seconds
+2024-03-24 18:21:41,451 - Aggregate - test - DEBUG - Grouping data for table swapExactETHForTokens
+2024-03-24 18:21:41,486 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactETHForTokens" as t GROUP BY from_address
+2024-03-24 18:21:41,496 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:21:41,544 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:22:01,441 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.896419
+2024-03-24 18:22:01,443 - Aggregate - test - DEBUG - Finished process_piecewise in 19.94646644592285 seconds
+2024-03-24 18:22:01,443 - Aggregate - test - DEBUG - Grouping data for table swapTokensForExactETH
+2024-03-24 18:22:01,478 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapTokensForExactETH" as t GROUP BY from_address
+2024-03-24 18:22:01,481 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:22:01,522 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:22:21,527 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.005599
+2024-03-24 18:22:21,528 - Aggregate - test - DEBUG - Finished process_piecewise in 20.047639846801758 seconds
+2024-03-24 18:22:21,529 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForETH
+2024-03-24 18:22:21,562 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForETH" as t GROUP BY from_address
+2024-03-24 18:22:21,568 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:22:21,615 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:22:41,492 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.877531
+2024-03-24 18:22:41,494 - Aggregate - test - DEBUG - Finished process_piecewise in 19.92557454109192 seconds
+2024-03-24 18:22:41,495 - Aggregate - test - DEBUG - Grouping data for table swapETHForExactTokens
+2024-03-24 18:22:41,528 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapETHForExactTokens" as t GROUP BY from_address
+2024-03-24 18:22:41,533 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:22:41,577 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:23:01,715 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.137881
+2024-03-24 18:23:01,716 - Aggregate - test - DEBUG - Finished process_piecewise in 20.182923793792725 seconds
+2024-03-24 18:23:01,717 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-03-24 18:23:01,751 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForTokensSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 18:23:01,755 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:23:01,798 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:23:21,773 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:19.974530
+2024-03-24 18:23:21,774 - Aggregate - test - DEBUG - Finished process_piecewise in 20.0185706615448 seconds
+2024-03-24 18:23:21,775 - Aggregate - test - DEBUG - Grouping data for table swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-03-24 18:23:21,809 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactETHForTokensSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 18:23:21,814 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:23:21,855 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:23:41,897 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.042509
+2024-03-24 18:23:41,898 - Aggregate - test - DEBUG - Finished process_piecewise in 20.08454942703247 seconds
+2024-03-24 18:23:41,899 - Aggregate - test - DEBUG - Grouping data for table swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-03-24 18:23:41,934 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountIn") as amountIn, array_agg(t."amountOutMin") as amountOutMin, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."swapExactTokensForETHSupportingFeeOnTransferTokens" as t GROUP BY from_address
+2024-03-24 18:23:41,942 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:23:41,992 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:24:02,192 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:20.199791
+2024-03-24 18:24:02,194 - Aggregate - test - DEBUG - Finished process_piecewise in 20.251837491989136 seconds
+2024-03-24 18:24:02,194 - Aggregate - test - DEBUG - Grouping data for table multicall_swapExactTokensForTokens_ndl
+2024-03-24 18:24:02,228 - Aggregate - test - DEBUG - Executing query SELECT from_address as address, array_agg(t."amountOut") as amountOut, array_agg(t."amountInMax") as amountInMax, array_agg(LENGTH(path) - LENGTH(REPLACE(path, ',', ''))) as pathlength FROM public."multicall_swapExactTokensForTokens_ndl" as t GROUP BY from_address
+2024-03-24 18:24:02,284 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:24:02,403 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:24:24,188 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:21.783249
+2024-03-24 18:24:24,193 - Aggregate - test - DEBUG - Finished process_piecewise in 21.908362865447998 seconds
+2024-03-24 18:24:24,748 - Aggregate - test - DEBUG - Finished function_based_features in 497.5128593444824 seconds
+2024-03-24 18:24:24,748 - Aggregate - test - DEBUG - Starting event_based_features
+2024-03-24 18:24:24,749 - Aggregate - test - DEBUG - Grouping data for table transferErc20
+2024-03-24 18:24:24,783 - Aggregate - test - DEBUG - Executing query SELECT t.from as address, array_agg(t."value") as value FROM public."transferErc20" as t GROUP BY t.from
+2024-03-24 18:24:25,144 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:24:26,425 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:24:58,656 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:32.230258
+2024-03-24 18:24:58,689 - Aggregate - test - DEBUG - Finished process_piecewise in 33.544453144073486 seconds
+2024-03-24 18:24:58,689 - Aggregate - test - DEBUG - Grouping data for table swap
+2024-03-24 18:24:58,723 - Aggregate - test - DEBUG - Executing query 
+        SELECT address, array_agg(z.amountIn) as amountIn
+        FROM (
+            SELECT t.to as address, t."amount0In" + t."amount1In" as amountIn 
+            FROM public."swap" as t
+            UNION
+            SELECT t.recipient as address, GREATEST(t."amount0", t."amount1") as amountIn
+            FROM public."swapV3" as t
+        ) as z
+        GROUP BY address;
+        
+2024-03-24 18:24:58,807 - Aggregate - test - DEBUG - Starting process_piecewise
+2024-03-24 18:24:58,973 - Aggregate - test - DEBUG - Processing batch 0
+2024-03-24 18:25:20,930 - Aggregate - test - DEBUG - Saved batch 0 to DB in 0:00:21.957162
+2024-03-24 18:25:20,936 - Aggregate - test - DEBUG - Finished process_piecewise in 22.129318952560425 seconds
+2024-03-24 18:25:20,937 - Aggregate - test - DEBUG - Finished event_based_features in 56.189239263534546 seconds
+2024-03-24 18:25:20,937 - Aggregate - test - DEBUG - Starting merge_dfs_on_address_DB
+2024-03-24 18:25:21,007 - Aggregate - test - DEBUG - CREATE INDEX address_based_features_address_index ON address_based_features (address);
+CREATE INDEX tx_time_based_in_features_address_index ON tx_time_based_in_features (address);
+CREATE INDEX tx_time_based_out_features_address_index ON tx_time_based_out_features (address);
+CREATE INDEX tx_value_based_features_address_index ON tx_value_based_features (address);
+CREATE INDEX tx_generic_features_address_index ON tx_generic_features (address);
+CREATE INDEX tx_custom_features_address_index ON tx_custom_features (address);
+CREATE INDEX swap_features_address_index ON swap_features (address);
+CREATE INDEX ev_erc20_based_features_address_index ON ev_erc20_based_features (address);
+CREATE INDEX ev_swap_based_features_address_index ON ev_swap_based_features (address);
+2024-03-24 18:25:21,008 - Aggregate - test - DEBUG - SELECT accounts.address, address_based_features.address__starting_zeros, address_based_features.address__0, address_based_features.address__1, address_based_features.address__2, address_based_features.address__3, address_based_features.address__4, address_based_features.address__5, address_based_features.address__6, address_based_features.address__7, address_based_features.address__8, address_based_features.address__9, address_based_features.address__a, address_based_features.address__b, address_based_features.address__c, address_based_features.address__d, address_based_features.address__e, address_based_features.address__f, tx_time_based_in_features.tx__time__intime_sleepiness, tx_time_based_in_features.tx__time__intime_transaction_frequency, tx_time_based_in_features.tx__time__intime_hourly_entropy, tx_time_based_in_features.tx__time__intime_mean, tx_time_based_in_features.tx__time__intime_median, tx_time_based_in_features.tx__time__intime_std, tx_time_based_in_features.tx__time__intime_min, tx_time_based_in_features.tx__time__intime_max, tx_time_based_in_features.tx__time__intime_quantile_95, tx_time_based_out_features.tx__time__outtime_sleepiness, tx_time_based_out_features.tx__time__outtime_transaction_frequency, tx_time_based_out_features.tx__time__outtime_hourly_entropy, tx_time_based_out_features.tx__time__outtime_mean, tx_time_based_out_features.tx__time__outtime_median, tx_time_based_out_features.tx__time__outtime_std, tx_time_based_out_features.tx__time__outtime_min, tx_time_based_out_features.tx__time__outtime_max, tx_time_based_out_features.tx__time__outtime_quantile_95, tx_value_based_features.tx__value__tvc, tx_value_based_features.tx__value__benfords, tx_generic_features.tx__generic__transaction_type_0, tx_generic_features.tx__generic__transaction_type_1, tx_generic_features.tx__generic__transaction_type_2, tx_generic_features.tx__generic__transaction_type_entropy, tx_generic_features.tx__generic__transaction_type_mode, tx_generic_features.tx__generic__receipt_status_0, tx_generic_features.tx__generic__receipt_status_1, tx_generic_features.tx__generic__receipt_status_entropy, tx_generic_features.tx__generic__receipt_status_mode, tx_generic_features.tx__generic__transaction_index_relative_mean, tx_generic_features.tx__generic__transaction_index_relative_median, tx_generic_features.tx__generic__transaction_index_relative_std, tx_generic_features.tx__generic__transaction_index_relative_min, tx_generic_features.tx__generic__transaction_index_relative_max, tx_generic_features.tx__generic__transaction_index_relative_quantile_95, tx_generic_features.tx__generic__value_mean, tx_generic_features.tx__generic__value_median, tx_generic_features.tx__generic__value_std, tx_generic_features.tx__generic__value_min, tx_generic_features.tx__generic__value_max, tx_generic_features.tx__generic__value_quantile_95, tx_generic_features.tx__generic__gas_mean, tx_generic_features.tx__generic__gas_median, tx_generic_features.tx__generic__gas_std, tx_generic_features.tx__generic__gas_min, tx_generic_features.tx__generic__gas_max, tx_generic_features.tx__generic__gas_quantile_95, tx_generic_features.tx__generic__gas_price_mean, tx_generic_features.tx__generic__gas_price_median, tx_generic_features.tx__generic__gas_price_std, tx_generic_features.tx__generic__gas_price_min, tx_generic_features.tx__generic__gas_price_max, tx_generic_features.tx__generic__gas_price_quantile_95, tx_custom_features.tx__custom__n_tx_per_block, tx_custom_features.tx__custom__tx_per_active_block_mean, tx_custom_features.tx__custom__tx_per_active_block_median, tx_custom_features.tx__custom__tx_per_active_block_std, tx_custom_features.tx__custom__tx_per_active_block_min, tx_custom_features.tx__custom__tx_per_active_block_max, tx_custom_features.tx__custom__tx_per_active_block_quantile_95, swap_features.scb__sb__0__swaps_per_block, swap_features.scb__sb__1__amountin__benfords, swap_features.scb__sb__1__amountin__tvc, swap_features.scb__sb__1__amountin__mean, swap_features.scb__sb__1__amountin__median, swap_features.scb__sb__1__amountin__std, swap_features.scb__sb__1__amountin__min, swap_features.scb__sb__1__amountin__max, swap_features.scb__sb__1__amountin__quantile_95, swap_features.scb__sb__1__amountoutmin__benfords, swap_features.scb__sb__1__amountoutmin__tvc, swap_features.scb__sb__1__amountoutmin__mean, swap_features.scb__sb__1__amountoutmin__median, swap_features.scb__sb__1__amountoutmin__std, swap_features.scb__sb__1__amountoutmin__min, swap_features.scb__sb__1__amountoutmin__max, swap_features.scb__sb__1__amountoutmin__quantile_95, swap_features.scb__sb__1__pathlength__mean, swap_features.scb__sb__1__pathlength__median, swap_features.scb__sb__1__pathlength__std, swap_features.scb__sb__1__pathlength__min, swap_features.scb__sb__1__pathlength__max, swap_features.scb__sb__1__pathlength__quantile_95, swap_features.scb__sb__1__swaps_per_block, swap_features.scb__sb__2__amountout__benfords, swap_features.scb__sb__2__amountout__tvc, swap_features.scb__sb__2__amountout__mean, swap_features.scb__sb__2__amountout__median, swap_features.scb__sb__2__amountout__std, swap_features.scb__sb__2__amountout__min, swap_features.scb__sb__2__amountout__max, swap_features.scb__sb__2__amountout__quantile_95, swap_features.scb__sb__2__amountinmax__benfords, swap_features.scb__sb__2__amountinmax__tvc, swap_features.scb__sb__2__amountinmax__mean, swap_features.scb__sb__2__amountinmax__median, swap_features.scb__sb__2__amountinmax__std, swap_features.scb__sb__2__amountinmax__min, swap_features.scb__sb__2__amountinmax__max, swap_features.scb__sb__2__amountinmax__quantile_95, swap_features.scb__sb__2__pathlength__mean, swap_features.scb__sb__2__pathlength__median, swap_features.scb__sb__2__pathlength__std, swap_features.scb__sb__2__pathlength__min, swap_features.scb__sb__2__pathlength__max, swap_features.scb__sb__2__pathlength__quantile_95, swap_features.scb__sb__2__swaps_per_block, swap_features.scb__sb__3__amountout__benfords, swap_features.scb__sb__3__amountout__tvc, swap_features.scb__sb__3__amountout__mean, swap_features.scb__sb__3__amountout__median, swap_features.scb__sb__3__amountout__std, swap_features.scb__sb__3__amountout__min, swap_features.scb__sb__3__amountout__max, swap_features.scb__sb__3__amountout__quantile_95, swap_features.scb__sb__3__amountinmax__benfords, swap_features.scb__sb__3__amountinmax__tvc, swap_features.scb__sb__3__amountinmax__mean, swap_features.scb__sb__3__amountinmax__median, swap_features.scb__sb__3__amountinmax__std, swap_features.scb__sb__3__amountinmax__min, swap_features.scb__sb__3__amountinmax__max, swap_features.scb__sb__3__amountinmax__quantile_95, swap_features.scb__sb__3__pathlength__mean, swap_features.scb__sb__3__pathlength__median, swap_features.scb__sb__3__pathlength__std, swap_features.scb__sb__3__pathlength__min, swap_features.scb__sb__3__pathlength__max, swap_features.scb__sb__3__pathlength__quantile_95, swap_features.scb__sb__3__swaps_per_block, swap_features.scb__sb__4__amountoutmin__benfords, swap_features.scb__sb__4__amountoutmin__tvc, swap_features.scb__sb__4__amountoutmin__mean, swap_features.scb__sb__4__amountoutmin__median, swap_features.scb__sb__4__amountoutmin__std, swap_features.scb__sb__4__amountoutmin__min, swap_features.scb__sb__4__amountoutmin__max, swap_features.scb__sb__4__amountoutmin__quantile_95, swap_features.scb__sb__4__pathlength__mean, swap_features.scb__sb__4__pathlength__median, swap_features.scb__sb__4__pathlength__std, swap_features.scb__sb__4__pathlength__min, swap_features.scb__sb__4__pathlength__max, swap_features.scb__sb__4__pathlength__quantile_95, swap_features.scb__sb__4__swaps_per_block, swap_features.scb__sb__5__amountout__benfords, swap_features.scb__sb__5__amountout__tvc, swap_features.scb__sb__5__amountout__mean, swap_features.scb__sb__5__amountout__median, swap_features.scb__sb__5__amountout__std, swap_features.scb__sb__5__amountout__min, swap_features.scb__sb__5__amountout__max, swap_features.scb__sb__5__amountout__quantile_95, swap_features.scb__sb__5__amountinmax__benfords, swap_features.scb__sb__5__amountinmax__tvc, swap_features.scb__sb__5__amountinmax__mean, swap_features.scb__sb__5__amountinmax__median, swap_features.scb__sb__5__amountinmax__std, swap_features.scb__sb__5__amountinmax__min, swap_features.scb__sb__5__amountinmax__max, swap_features.scb__sb__5__amountinmax__quantile_95, swap_features.scb__sb__5__pathlength__mean, swap_features.scb__sb__5__pathlength__median, swap_features.scb__sb__5__pathlength__std, swap_features.scb__sb__5__pathlength__min, swap_features.scb__sb__5__pathlength__max, swap_features.scb__sb__5__pathlength__quantile_95, swap_features.scb__sb__5__swaps_per_block, swap_features.scb__sb__6__amountin__benfords, swap_features.scb__sb__6__amountin__tvc, swap_features.scb__sb__6__amountin__mean, swap_features.scb__sb__6__amountin__median, swap_features.scb__sb__6__amountin__std, swap_features.scb__sb__6__amountin__min, swap_features.scb__sb__6__amountin__max, swap_features.scb__sb__6__amountin__quantile_95, swap_features.scb__sb__6__amountoutmin__benfords, swap_features.scb__sb__6__amountoutmin__tvc, swap_features.scb__sb__6__amountoutmin__mean, swap_features.scb__sb__6__amountoutmin__median, swap_features.scb__sb__6__amountoutmin__std, swap_features.scb__sb__6__amountoutmin__min, swap_features.scb__sb__6__amountoutmin__max, swap_features.scb__sb__6__amountoutmin__quantile_95, swap_features.scb__sb__6__pathlength__mean, swap_features.scb__sb__6__pathlength__median, swap_features.scb__sb__6__pathlength__std, swap_features.scb__sb__6__pathlength__min, swap_features.scb__sb__6__pathlength__max, swap_features.scb__sb__6__pathlength__quantile_95, swap_features.scb__sb__6__swaps_per_block, swap_features.scb__sb__7__amountout__benfords, swap_features.scb__sb__7__amountout__tvc, swap_features.scb__sb__7__amountout__mean, swap_features.scb__sb__7__amountout__median, swap_features.scb__sb__7__amountout__std, swap_features.scb__sb__7__amountout__min, swap_features.scb__sb__7__amountout__max, swap_features.scb__sb__7__amountout__quantile_95, swap_features.scb__sb__7__pathlength__mean, swap_features.scb__sb__7__pathlength__median, swap_features.scb__sb__7__pathlength__std, swap_features.scb__sb__7__pathlength__min, swap_features.scb__sb__7__pathlength__max, swap_features.scb__sb__7__pathlength__quantile_95, swap_features.scb__sb__7__swaps_per_block, swap_features.scb__sb__8__amountin__benfords, swap_features.scb__sb__8__amountin__tvc, swap_features.scb__sb__8__amountin__mean, swap_features.scb__sb__8__amountin__median, swap_features.scb__sb__8__amountin__std, swap_features.scb__sb__8__amountin__min, swap_features.scb__sb__8__amountin__max, swap_features.scb__sb__8__amountin__quantile_95, swap_features.scb__sb__8__amountoutmin__benfords, swap_features.scb__sb__8__amountoutmin__tvc, swap_features.scb__sb__8__amountoutmin__mean, swap_features.scb__sb__8__amountoutmin__median, swap_features.scb__sb__8__amountoutmin__std, swap_features.scb__sb__8__amountoutmin__min, swap_features.scb__sb__8__amountoutmin__max, swap_features.scb__sb__8__amountoutmin__quantile_95, swap_features.scb__sb__8__pathlength__mean, swap_features.scb__sb__8__pathlength__median, swap_features.scb__sb__8__pathlength__std, swap_features.scb__sb__8__pathlength__min, swap_features.scb__sb__8__pathlength__max, swap_features.scb__sb__8__pathlength__quantile_95, swap_features.scb__sb__8__swaps_per_block, swap_features.scb__sb__9__amountoutmin__benfords, swap_features.scb__sb__9__amountoutmin__tvc, swap_features.scb__sb__9__amountoutmin__mean, swap_features.scb__sb__9__amountoutmin__median, swap_features.scb__sb__9__amountoutmin__std, swap_features.scb__sb__9__amountoutmin__min, swap_features.scb__sb__9__amountoutmin__max, swap_features.scb__sb__9__amountoutmin__quantile_95, swap_features.scb__sb__9__pathlength__mean, swap_features.scb__sb__9__pathlength__median, swap_features.scb__sb__9__pathlength__std, swap_features.scb__sb__9__pathlength__min, swap_features.scb__sb__9__pathlength__max, swap_features.scb__sb__9__pathlength__quantile_95, swap_features.scb__sb__9__swaps_per_block, swap_features.scb__sb__10__amountin__benfords, swap_features.scb__sb__10__amountin__tvc, swap_features.scb__sb__10__amountin__mean, swap_features.scb__sb__10__amountin__median, swap_features.scb__sb__10__amountin__std, swap_features.scb__sb__10__amountin__min, swap_features.scb__sb__10__amountin__max, swap_features.scb__sb__10__amountin__quantile_95, swap_features.scb__sb__10__amountoutmin__benfords, swap_features.scb__sb__10__amountoutmin__tvc, swap_features.scb__sb__10__amountoutmin__mean, swap_features.scb__sb__10__amountoutmin__median, swap_features.scb__sb__10__amountoutmin__std, swap_features.scb__sb__10__amountoutmin__min, swap_features.scb__sb__10__amountoutmin__max, swap_features.scb__sb__10__amountoutmin__quantile_95, swap_features.scb__sb__10__pathlength__mean, swap_features.scb__sb__10__pathlength__median, swap_features.scb__sb__10__pathlength__std, swap_features.scb__sb__10__pathlength__min, swap_features.scb__sb__10__pathlength__max, swap_features.scb__sb__10__pathlength__quantile_95, swap_features.scb__sb__10__swaps_per_block, swap_features.scb__sb__0__amountout__benfords, swap_features.scb__sb__0__amountout__tvc, swap_features.scb__sb__0__amountout__mean, swap_features.scb__sb__0__amountout__median, swap_features.scb__sb__0__amountout__std, swap_features.scb__sb__0__amountout__min, swap_features.scb__sb__0__amountout__max, swap_features.scb__sb__0__amountout__quantile_95, swap_features.scb__sb__0__amountinmax__benfords, swap_features.scb__sb__0__amountinmax__tvc, swap_features.scb__sb__0__amountinmax__mean, swap_features.scb__sb__0__amountinmax__median, swap_features.scb__sb__0__amountinmax__std, swap_features.scb__sb__0__amountinmax__min, swap_features.scb__sb__0__amountinmax__max, swap_features.scb__sb__0__amountinmax__quantile_95, swap_features.scb__sb__0__pathlength__mean, swap_features.scb__sb__0__pathlength__median, swap_features.scb__sb__0__pathlength__std, swap_features.scb__sb__0__pathlength__min, swap_features.scb__sb__0__pathlength__max, swap_features.scb__sb__0__pathlength__quantile_95, ev_erc20_based_features.scb__eb__transfer__transfers_per_block, ev_erc20_based_features.scb__eb__transfer__value__benfords, ev_erc20_based_features.scb__eb__transfer__value__tvc, ev_erc20_based_features.scb__eb__transfer__value__mean, ev_erc20_based_features.scb__eb__transfer__value__median, ev_erc20_based_features.scb__eb__transfer__value__std, ev_erc20_based_features.scb__eb__transfer__value__min, ev_erc20_based_features.scb__eb__transfer__value__max, ev_erc20_based_features.scb__eb__transfer__value__quantile_95, ev_swap_based_features.scb__eb__swap__swaps_per_block, ev_swap_based_features.scb__eb__swap__amountin__benfords, ev_swap_based_features.scb__eb__swap__amountin__tvc, ev_swap_based_features.scb__eb__swap__amountin__mean, ev_swap_based_features.scb__eb__swap__amountin__median, ev_swap_based_features.scb__eb__swap__amountin__std, ev_swap_based_features.scb__eb__swap__amountin__min, ev_swap_based_features.scb__eb__swap__amountin__max, ev_swap_based_features.scb__eb__swap__amountin__quantile_95 FROM accounts LEFT JOIN address_based_features ON address_based_features.address = accounts.address LEFT JOIN tx_time_based_in_features ON tx_time_based_in_features.address = accounts.address LEFT JOIN tx_time_based_out_features ON tx_time_based_out_features.address = accounts.address LEFT JOIN tx_value_based_features ON tx_value_based_features.address = accounts.address LEFT JOIN tx_generic_features ON tx_generic_features.address = accounts.address LEFT JOIN tx_custom_features ON tx_custom_features.address = accounts.address LEFT JOIN swap_features ON swap_features.address = accounts.address LEFT JOIN ev_erc20_based_features ON ev_erc20_based_features.address = accounts.address LEFT JOIN ev_swap_based_features ON ev_swap_based_features.address = accounts.address
+2024-03-24 18:26:56,529 - Aggregate - test - DEBUG - Finished merge_dfs_on_address_DB in 95.59228563308716 seconds
+2024-03-24 18:26:56,530 - Aggregate - test - DEBUG - Finished ETL in 1076.055114030838 seconds
+2024-03-24 18:26:57,552 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:27:25,564 - Aggregate - test - DEBUG - Starting load_features
+2024-03-24 18:31:55,924 - Aggregate - test - DEBUG - Finished load_features in 270.35969400405884 seconds
+2024-03-24 18:31:56,449 - Aggregate - test - DEBUG - Starting load_transfers
+2024-03-24 18:32:00,575 - Aggregate - test - DEBUG - Finished load_transfers in 4.12675142288208 seconds
+2024-03-24 18:32:02,938 - Aggregate - test - DEBUG - Starting load_transfers
+2024-03-24 18:32:07,093 - Aggregate - test - DEBUG - Finished load_transfers in 4.155002593994141 seconds
+2024-03-24 18:32:41,779 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:33:10,635 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:33:35,096 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:37:48,359 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:38:02,403 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:38:16,078 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:38:26,754 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:39:26,790 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:39:55,220 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:40:23,267 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:40:50,279 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:49:00,218 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:49:13,914 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:49:27,465 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:49:38,067 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 18:49:41,539 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'xmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 18:49:41,540 - Aggregate - test - DEBUG - Starting load_features
+2024-03-24 18:49:41,540 - Aggregate - test - INFO - Loading features from cache
+2024-03-24 18:49:41,594 - Aggregate - test - DEBUG - Finished load_features in 0.05404782295227051 seconds
+2024-03-24 19:19:21,152 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 19:19:34,845 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:19:48,339 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:19:58,991 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:20:02,462 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 19:20:02,464 - Aggregate - test - DEBUG - Starting load_features
+2024-03-24 19:20:02,464 - Aggregate - test - INFO - Loading features from cache
+2024-03-24 19:20:02,513 - Aggregate - test - DEBUG - Finished load_features in 0.049044132232666016 seconds
+2024-03-24 19:37:21,304 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 19:37:34,988 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:37:48,466 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:37:59,094 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 19:38:02,533 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 19:38:02,535 - Aggregate - test - DEBUG - Starting load_features
+2024-03-24 19:38:02,535 - Aggregate - test - INFO - Loading features from cache
+2024-03-24 19:38:02,583 - Aggregate - test - DEBUG - Finished load_features in 0.04804420471191406 seconds
+2024-03-24 22:46:23,029 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 22:46:36,689 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 22:46:50,146 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 22:47:00,793 - Aggregate - test - DEBUG - Loading arbitrage txs from db
+2024-03-24 22:47:04,289 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 22:47:04,290 - Aggregate - test - DEBUG - Starting load_features
+2024-03-24 22:47:04,291 - Aggregate - test - INFO - Loading features from cache
+2024-03-24 22:47:04,346 - Aggregate - test - DEBUG - Finished load_features in 0.05605125427246094 seconds
+2024-03-24 23:19:33,983 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 23:24:08,578 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 23:25:44,525 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run'}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-03-24 23:32:22,379 - Aggregate - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'E:/test_data/test_run', 'master_thesis': True}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}

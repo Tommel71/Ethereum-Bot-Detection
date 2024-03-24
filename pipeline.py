@@ -27,6 +27,7 @@ import shutil
 # The main sample is the 100k sample that has the 2 test blocks at the end
 # Most of the analysis is done on this.
 main_sample = "test"
+# when flag additional_experiments is used, multiple samples are used for the analysis
 settingnames = [main_sample] # ["largesample1", "largesample2", "largesample3", "largesample4", main_sample]
 # relevant only for the longitudinal study in my Masterthesis, not present in the paper:
 prediction_files = ["randomforest_results_keep_scaling", "randomforest_results_new_scaling"]
@@ -280,7 +281,7 @@ class FinalPipeline(PipelineComponent):
     @log_time
     def run_experiments(self):
 
-        run = "large"
+        run = main_sample
         set_configs(run, self.prefix)
         configs = load_configs(self.prefix)
         an = Analysis(configs, self.prefix)
@@ -302,18 +303,17 @@ if __name__ == "__main__":
     finalpipeline.delete_cache()
     finalpipeline.populate_db()
     finalpipeline.ETL()
-    # analysis on the main observation window
     finalpipeline.run_experiments()
 
-
-    # The following is code used for a longitudinal study over multiple observation windows
-    #finalpipeline.train()
-    #finalpipeline.calculate_eval() # takes like 20 minutes, when stuff is already cached
-    #finalpipeline.combine_aggregate_stats_grouped_by_bot_status()
-    #finalpipeline.calculate_feature_stats()
-    #finalpipeline.investigate_feature_drift()
-    #finalpipeline.investigate_value()
-    #finalpipeline.analysis()
-    #finalpipeline.calculate_DB_statistics()
-    #finalpipeline.investigate_DB_statistics()
-    #finalpipeline.render()
+    if configs_1["General"]["additional_experiments"]:
+        # The following is code used for a longitudinal study over multiple observation windows
+        finalpipeline.train()
+        finalpipeline.calculate_eval() # takes like 20 minutes, when stuff is already cached
+        finalpipeline.combine_aggregate_stats_grouped_by_bot_status()
+        finalpipeline.calculate_feature_stats()
+        finalpipeline.investigate_feature_drift()
+        finalpipeline.investigate_value()
+        finalpipeline.analysis()
+        finalpipeline.calculate_DB_statistics()
+        finalpipeline.investigate_DB_statistics()
+        finalpipeline.render()

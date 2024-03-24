@@ -99,7 +99,16 @@ def classification_metrics_from_binary_predictions(y_test, y_pred, with_ci=False
 
 def get_scores(pipeline, X, y, classes, multiclass=False, negative_classes=("human",)):
     # Perform cross validation with a random forest classifier within each fold of KFold
-    cv = KFold(n_splits=20, shuffle=True, random_state=0)
+    # if data is too small for 20 splits, use 2 for testing purposes
+
+    if len(X) < 20:
+        cv = KFold(n_splits=2, shuffle=True, random_state=0)
+
+    else:
+        cv = KFold(n_splits=20, shuffle=True, random_state=0)
+
+    splits = cv.split(X)
+
 
     data = []
     preds = []
@@ -114,7 +123,7 @@ def get_scores(pipeline, X, y, classes, multiclass=False, negative_classes=("hum
         y = np.array([mapping[c] for c in y])
         reverse_mapping = {i: c for c, i in mapping.items()}
 
-    for train_idx, test_idx in cv.split(X):
+    for train_idx, test_idx in splits:
         X_train, X_test = X[train_idx], X[test_idx]
         y_train, y_test = y[train_idx], y[test_idx]
 
@@ -122,7 +131,7 @@ def get_scores(pipeline, X, y, classes, multiclass=False, negative_classes=("hum
         try:
             y_pred = pipeline.predict(X_test)
         except:
-            print("ad")
+            pass
         if multiclass:
             data += [
                 {
@@ -169,6 +178,11 @@ def get_scores(pipeline, X, y, classes, multiclass=False, negative_classes=("hum
                                   classes).T
 
     category_matrix_only = category_matrix.copy()
+
+    # make sure all classes are present in columns
+    for c in classes:
+        if c not in category_matrix_only.columns:
+            category_matrix_only[c] = 0
 
     if multiclass:
 
@@ -520,6 +534,7 @@ class Analysis(PipelineComponent):
     def evaluate_clustering_from_dfs(self, evalset:pd.DataFrame, evalset_clustered: pd.DataFrame):
 
         df_evalset_categorised = pd.DataFrame(evalset_clustered, index=evalset.index)
+
         df_evalset_categorised.columns = ["cluster_id"]
         df_target = pd.DataFrame(evalset["Bot"], index=evalset.index)
         df_target.columns = ["label"]
@@ -1201,7 +1216,7 @@ class Analysis(PipelineComponent):
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        evalset = self.fp.load_eval_set()
+        evalset_all = self.fp.load_eval_set()
 
         data = {}
 
@@ -1209,6 +1224,12 @@ class Analysis(PipelineComponent):
         for algorithm, nafill, preprocessing, n_cluster in combinations:
             df_raw_clusters = pd.read_csv(f"{self.prefix}/outputs/{run}/cluster_results/evalset_clustered_{algorithm}_{nafill}_{preprocessing}_{n_cluster}.csv", index_col=0)
 
+            # take only the subset that is also in df_raw_clusters
+            if len(df_raw_clusters) != len(evalset_all):
+                self.logger.warning("The length of the evalset and the cluster results are not the same. Taking the intersection.")
+                evalset = evalset_all[evalset_all.index.isin(df_raw_clusters.index)]
+            else:
+                evalset = evalset_all
             # order df_raw_clusters by the index of evalset
             df_raw_clusters = df_raw_clusters.reindex(evalset.index)
             #X = df_raw_clusters["cluster"].values.reshape(-1,1)
@@ -1525,6 +1546,9 @@ class Analysis(PipelineComponent):
         # get data
         evalset = self.fp.load_eval_set()
         df_features_evalset = self.agg.load_evalset_features()
+        # restrict evalset to elements in the evalset that are also in the entire dataset
+        # this should only be relevant for a small test set, the full data shouldnt need this
+        evalset = evalset.loc[df_features_evalset.index]
         df_features_evalset = df_features_evalset.loc[evalset.index]
 
         # get the threshold based results
@@ -1581,8 +1605,8 @@ class Analysis(PipelineComponent):
         if not os.path.exists(folder):
             os.makedirs(folder)
 
-        algorithm, nafill, preprocessing = top_setup
-        df_raw_clusters = pd.read_csv(f"{self.prefix}/outputs/{run}/cluster_results/evalset_clustered_{algorithm}_{nafill}_{preprocessing}.csv", index_col=0)
+        algorithm, nafill, preprocessing, n_clusters = top_setup
+        df_raw_clusters = pd.read_csv(f"{self.prefix}/outputs/{run}/cluster_results/evalset_clustered_{algorithm}_{nafill}_{preprocessing}_{n_clusters}.csv", index_col=0)
 
 
         evalset_features = self.agg.load_evalset_features()
@@ -1685,14 +1709,15 @@ class Analysis(PipelineComponent):
     @log_time
     def run_experiments(self):
 
-        ##########################
-        ### THRESHOLD BASED
-        self.experiments_threshold_based()
+        if self.configs["General"]["additional_experiments"]:
+            ##########################
+            ### THRESHOLD BASED
+            self.experiments_threshold_based()
 
-        ##########################
-        ### GRAPH BASED
-        self.experiments_graph_based_calculation()
-        self.experiments_graph_based_evaluate()
+            ##########################
+            ### GRAPH BASED
+            self.experiments_graph_based_calculation()
+            self.experiments_graph_based_evaluate()
 
         ##########################
         ### SUPERVISED
@@ -1701,11 +1726,12 @@ class Analysis(PipelineComponent):
         ##########################
         ### CLUSTERING
         self.create_cluster_dfs()
-        top_setup = self.create_cluster_table()
+        top_setup = self.create_cluster_table_clustersizefixed()
 
         # clustering and supervised results
+        if self.configs["General"]["additional_experiments"]:
+            self.experiments_supervised_with_cluster_info(top_setup)
 
-        self.experiments_supervised_with_cluster_info(top_setup)
 
 
     @log_time

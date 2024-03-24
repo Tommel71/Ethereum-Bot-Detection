@@ -1,6 +1,7 @@
 [General]
 run_name = "test"
-PREFIX_DB = "test_data/test_run" # source of data
+PREFIX_DB = "E:/test_data/test_run" # source of data
+master_thesis = true
 
 [Plotting]
 tick_size = 15
@@ -27,6 +28,6 @@ top_percentage_receiver=0.01
 max_transfers_deposit=5
 
 [Clustering]
-algorithms = ["gmm", "xmeans"]
+algorithms = ["gmm", "kmeans"]
 nafills = ["mean", "-1"]
 preprocessings = ["non-UMAP", "UMAP"]

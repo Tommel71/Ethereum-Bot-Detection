@@ -1,9 +1,11 @@
 # Ethereum Bot Detection
 This code is used was used to generate artifacts of the paper 
 "Detecting Financial Bots on the Ethereum Blockchain".
+![Bot Image](assets/bot.webp "Bot Image")
 
 Note that the methods used in this paper are compute intensive for a single PC and require 64GB of RAM.
-On an AMD Ryzen 5 2600 Six-Core Processor (3.4 GHz) with 64GB of RAM, the code takes about 24 hours to run.
+On an AMD Ryzen 5 2600 Six-Core Processor (3.4 GHz) with 64GB of RAM, the code takes about 24 hours to run and in
+addition to the results produced for the paper, several other tables and figures are generated.
 
 ### How to install
 This repository has only been tested on Windows 10 but may also work Linux distributions.
@@ -18,7 +20,7 @@ python -m venv .venv
 .venv/Scripts/activate source 
 pip install requirements.txt
 ```
-or on Linux
+or on Linux (untested)
 ```
 python -m venv .venv
 source .venv/bin/activate
@@ -26,22 +28,31 @@ pip install requirements.txt
 ```
 
 
-### Minimal Working Example
+### Minimal Example
 
 ##### Setup
 To use this repository block, transaction, and log data (enriched as provided by graphsense-lib) are required
 
-A test sample has been provided under `test_data`
+To use it, point `PREFIX_DB` in `configs/test.toml` to the folder containing the raw data as demonstrated in 
+a test sample provided in `test_data/test_run`.
 
-Furthermore a trace_creations.csv file is required that contains all addresses that should be marked as a smart contract
+Furthermore, a trace_creations.csv file is required that contains all addresses that should be marked as a smart contract
+A minimal example is also provided in `test_data/codes`. Note that the content of the output column is not of central
+importance. As soon as an address appears in the to_address column, it will be marked as a smart contract.
+
+The data is provided to the program in a compressed format as demonstrated in the minimal example.
+
+##### Run
+
+To run the code use the following command
+```
+python pipeline.py
+```
+
+Tables and figures will be saved in the `output` folder.
 
 
 ### Acknowledgements
 
 We use MEV-inspect https://github.com/flashbots/mev-inspect-py/tree/main/mev_inspect with slightly adapted code
 to work with data provided by graphsense-lib https://github.com/graphsense/graphsense-lib.
-
-
-
-
-Minimal example to demonstrate how to run the code is a WIP.
