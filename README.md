@@ -1,7 +1,12 @@
 # Ethereum Bot Detection
-This code was used to generate results of the paper 
+
+<div style="text-align: center;">
+  This code was used to generate results presented in the paper 
 "Detecting Financial Bots on the Ethereum Blockchain".
-![Bot Image](assets/bot.webp "Bot Image")
+
+  <img src="assets/bot.webp" alt="Bot Image" width="400" height="400">
+</div>
+
 
 Note that the methods used in this paper are compute intensive for a single PC and require 64GB of RAM.
 On an AMD Ryzen 5 2600 Six-Core Processor (3.4 GHz) with 64GB of RAM, the code takes about 24 hours to run and in
