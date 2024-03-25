@@ -14,8 +14,8 @@ addition to the results produced for the paper, several other tables and figures
 ### How to install
 This repository has only been tested on Windows 10 but may also work Linux distributions.
 
-- install miktex and add the ...\MiKTeX\miktex\bin\x64\ folder to the path
-- install postgres 15.1 and adjust the pg_hba.conf file as laid out here:  https://stackoverflow.com/questions/64210167/unable-to-connect-to-postgres-db-due-to-the-authentication-type-10-is-not-suppor
+- install miktex and add the `...\MiKTeX\miktex\bin\x64\` folder to the path
+- install `postgres 15.1` and adjust the `pg_hba.conf` file as laid out here:  https://stackoverflow.com/questions/64210167/unable-to-connect-to-postgres-db-due-to-the-authentication-type-10-is-not-suppor
 
 To install the required python packages use the following commands
 
