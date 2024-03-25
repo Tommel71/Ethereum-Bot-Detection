@@ -1,8 +1,7 @@
 # Ethereum Bot Detection
 
+  This code was used to generate results presented in the paper "Detecting Financial Bots on the Ethereum Blockchain".
 <div style="text-align: center;">
-  This code was used to generate results presented in the paper 
-"Detecting Financial Bots on the Ethereum Blockchain".
 
   <img src="assets/bot.webp" alt="Bot Image" width="400" height="400">
 </div>
