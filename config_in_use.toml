@@ -1,7 +1,7 @@
 [General]
 run_name = "test"
 PREFIX_DB = "E:/test_data/test_run" # source of data
-master_thesis = true
+additional_experiments = false
 
 [Plotting]
 tick_size = 15
