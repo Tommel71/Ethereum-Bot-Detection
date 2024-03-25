@@ -1,5 +1,5 @@
 # Ethereum Bot Detection
-This code is used was used to generate artifacts of the paper 
+This code was used to generate results of the paper 
 "Detecting Financial Bots on the Ethereum Blockchain".
 ![Bot Image](assets/bot.webp "Bot Image")
 
