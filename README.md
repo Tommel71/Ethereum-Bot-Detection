@@ -1,18 +1,17 @@
-# Ethereum Bot Detection
 
-  This code was used to generate results presented in the paper "Detecting Financial Bots on the Ethereum Blockchain".
-<div style="text-align: center;">
+<h1 align="center">Ethereum Bot Detection</h1>
 
-  <img src="assets/bot.webp" alt="Bot Image" width="400" height="400">
-</div>
-
+<p align="center">
+  This code was used to generate results presented in the paper <a href="https://arxiv.org/abs/2403.19530">"Detecting Financial Bots on the Ethereum Blockchain"</a>.
+  <img src="assets/bot.webp" alt="Bot Image width="400" height="400"">
+</p>
 
 Note that the methods used in this paper are compute intensive for a single PC and require 64GB of RAM.
 On an AMD Ryzen 5 2600 Six-Core Processor (3.4 GHz) with 64GB of RAM, the code takes about 24 hours to run and in
 addition to the results produced for the paper, several other tables and figures are generated.
 
 ### How to install
-This repository has only been tested on Windows 10 but may also work Linux distributions.
+This repository has only been tested on Windows 10 but may also work on Linux distributions.
 
 - install miktex and add the `...\MiKTeX\miktex\bin\x64\` folder to the path
 - install `postgres 15.1` and adjust the `pg_hba.conf` file as laid out here:  https://stackoverflow.com/questions/64210167/unable-to-connect-to-postgres-db-due-to-the-authentication-type-10-is-not-suppor
