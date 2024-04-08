@@ -1,8 +1,9 @@
 
-<h1 align="center">Ethereum Bot Detection</h1>
-
-<p align="center">
+<h1 align="center">Ethereum</h1>
+<p align="center"> Bot Detection
   This code was used to generate results presented in the paper <a href="https://arxiv.org/abs/2403.19530">"Detecting Financial Bots on the Ethereum Blockchain"</a>.
+</p>
+<p align="center">
   <img src="assets/bot.webp" alt="Bot Image width="400" height="400"">
 </p>
 
