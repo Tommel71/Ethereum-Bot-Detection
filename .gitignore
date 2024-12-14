@@ -1,1 +1,9 @@
 .venv
+.idea
+__pycache__*
+data/
+*.pyc
+cluster_results
+outputs
+test_data/test_run/erigon_extract/uncompressed
+*.log

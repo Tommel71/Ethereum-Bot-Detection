@@ -385,3 +385,148 @@
 2024-03-24 23:32:52,253 - Analysis - test - DEBUG - Starting experiments_supervised_with_cluster_info
 2024-03-24 23:33:06,060 - Analysis - test - DEBUG - Finished experiments_supervised_with_cluster_info in 13.807553052902222 seconds
 2024-03-24 23:33:06,060 - Analysis - test - DEBUG - Finished run_experiments in 43.68048357963562 seconds
+2024-12-14 11:04:38,093 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:04:38,096 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:04:38,096 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:14:31,839 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:14:31,848 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:14:31,848 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:26:30,864 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:26:30,866 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:26:30,866 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:28:10,732 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:28:10,733 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:28:10,733 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:28:38,153 - Analysis - test - DEBUG - Finished experiments_supervised in 27.419544219970703 seconds
+2024-12-14 11:28:38,153 - Analysis - test - DEBUG - Starting create_cluster_dfs
+2024-12-14 11:29:35,363 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:30:02,460 - Analysis - test - DEBUG - Finished get_clustering in 27.097694635391235 seconds
+2024-12-14 11:30:02,464 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:32:54,411 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:32:54,413 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:32:54,413 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:33:30,915 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:33:30,916 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:33:30,916 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:33:56,623 - Analysis - test - DEBUG - Finished experiments_supervised in 25.70701241493225 seconds
+2024-12-14 11:33:56,623 - Analysis - test - DEBUG - Starting create_cluster_dfs
+2024-12-14 11:33:56,903 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:34:24,710 - Analysis - test - DEBUG - Finished get_clustering in 27.8069965839386 seconds
+2024-12-14 11:34:24,712 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:34:39,467 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:34:39,468 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:34:39,468 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:35:04,916 - Analysis - test - DEBUG - Finished experiments_supervised in 25.44847321510315 seconds
+2024-12-14 11:35:04,916 - Analysis - test - DEBUG - Starting create_cluster_dfs
+2024-12-14 11:35:05,199 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:35:32,216 - Analysis - test - DEBUG - Finished get_clustering in 27.01699733734131 seconds
+2024-12-14 11:35:32,218 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:37:56,805 - Analysis - test - DEBUG - Finished get_clustering in 144.5864417552948 seconds
+2024-12-14 11:37:56,806 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:42:52,996 - Analysis - test - DEBUG - Finished get_clustering in 296.19078183174133 seconds
+2024-12-14 11:42:52,998 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:42:52,999 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:44:39,659 - Analysis - test - DEBUG - Using configs {'General': {'run_name': 'test', 'PREFIX_DB': 'C:/Users/Public/test_data/test_run', 'additional_experiments': False}, 'Plotting': {'tick_size': 15, 'label_size': 20, 'title_size': 30, 'fig_width': 20, 'font_size': 16}, 'Metadata': {'n_blocks': 2000}, 'Aggregate': {'tx_generic_cols': {'dist': ['transaction_type', 'receipt_status'], 'stats': ['transaction_index_relative', 'value', 'gas', 'gas_price']}}, 'Heuristics': {'nafill': 'mean', 'Deposit': {'receiver_average_blocks_per_tx_threshold': 20, 'top_percentage_receiver': 0.01, 'max_transfers_deposit': 5}}, 'Clustering': {'algorithms': ['gmm', 'kmeans'], 'nafills': ['mean', '-1'], 'preprocessings': ['non-UMAP', 'UMAP']}}
+2024-12-14 11:44:39,660 - Analysis - test - DEBUG - Starting run_experiments
+2024-12-14 11:44:39,660 - Analysis - test - DEBUG - Starting experiments_supervised
+2024-12-14 11:45:05,830 - Analysis - test - DEBUG - Finished experiments_supervised in 26.169134616851807 seconds
+2024-12-14 11:45:05,830 - Analysis - test - DEBUG - Starting create_cluster_dfs
+2024-12-14 11:45:06,111 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:45:33,283 - Analysis - test - DEBUG - Finished get_clustering in 27.171994924545288 seconds
+2024-12-14 11:45:33,284 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:47:54,363 - Analysis - test - DEBUG - Finished get_clustering in 141.0789976119995 seconds
+2024-12-14 11:47:54,365 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:52:46,568 - Analysis - test - DEBUG - Finished get_clustering in 292.2030849456787 seconds
+2024-12-14 11:52:46,570 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:52:46,571 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:54:17,677 - Analysis - test - DEBUG - Finished embed in 91.10640811920166 seconds
+2024-12-14 11:54:18,205 - Analysis - test - DEBUG - Finished get_clustering in 91.63493275642395 seconds
+2024-12-14 11:54:18,207 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:54:18,208 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:54:18,385 - Analysis - test - DEBUG - Finished embed in 0.17699694633483887 seconds
+2024-12-14 11:54:20,273 - Analysis - test - DEBUG - Finished get_clustering in 2.0659992694854736 seconds
+2024-12-14 11:54:20,275 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:54:20,276 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:54:20,408 - Analysis - test - DEBUG - Finished embed in 0.13199996948242188 seconds
+2024-12-14 11:54:23,653 - Analysis - test - DEBUG - Finished get_clustering in 3.378109931945801 seconds
+2024-12-14 11:54:23,655 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:54:50,818 - Analysis - test - DEBUG - Finished get_clustering in 27.163000345230103 seconds
+2024-12-14 11:54:50,820 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:55:40,719 - Analysis - test - DEBUG - Finished get_clustering in 49.89899921417236 seconds
+2024-12-14 11:55:40,721 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:56:51,650 - Analysis - test - DEBUG - Finished get_clustering in 70.92899990081787 seconds
+2024-12-14 11:56:51,652 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:56:51,653 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:57:42,856 - Analysis - test - DEBUG - Finished embed in 51.203636169433594 seconds
+2024-12-14 11:57:44,021 - Analysis - test - DEBUG - Finished get_clustering in 52.369632959365845 seconds
+2024-12-14 11:57:44,023 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:57:44,024 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:57:44,164 - Analysis - test - DEBUG - Finished embed in 0.14000654220581055 seconds
+2024-12-14 11:57:46,629 - Analysis - test - DEBUG - Finished get_clustering in 2.606001853942871 seconds
+2024-12-14 11:57:46,631 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:57:46,632 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:57:46,770 - Analysis - test - DEBUG - Finished embed in 0.1380012035369873 seconds
+2024-12-14 11:57:54,251 - Analysis - test - DEBUG - Finished get_clustering in 7.619999885559082 seconds
+2024-12-14 11:57:54,253 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:57:56,078 - Analysis - test - DEBUG - Finished get_clustering in 1.8249993324279785 seconds
+2024-12-14 11:57:56,080 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:57:59,485 - Analysis - test - DEBUG - Finished get_clustering in 3.405001401901245 seconds
+2024-12-14 11:57:59,490 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:05,823 - Analysis - test - DEBUG - Finished get_clustering in 6.333002805709839 seconds
+2024-12-14 11:58:05,825 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:05,826 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:05,988 - Analysis - test - DEBUG - Finished embed in 0.1620044708251953 seconds
+2024-12-14 11:58:06,466 - Analysis - test - DEBUG - Finished get_clustering in 0.6410000324249268 seconds
+2024-12-14 11:58:06,469 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:06,470 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:06,632 - Analysis - test - DEBUG - Finished embed in 0.16199779510498047 seconds
+2024-12-14 11:58:07,515 - Analysis - test - DEBUG - Finished get_clustering in 1.0459978580474854 seconds
+2024-12-14 11:58:07,517 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:07,518 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:07,674 - Analysis - test - DEBUG - Finished embed in 0.1560060977935791 seconds
+2024-12-14 11:58:09,486 - Analysis - test - DEBUG - Finished get_clustering in 1.968998908996582 seconds
+2024-12-14 11:58:09,488 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:10,452 - Analysis - test - DEBUG - Finished get_clustering in 0.9640016555786133 seconds
+2024-12-14 11:58:10,454 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:12,636 - Analysis - test - DEBUG - Finished get_clustering in 2.182000160217285 seconds
+2024-12-14 11:58:12,638 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:16,736 - Analysis - test - DEBUG - Finished get_clustering in 4.097999095916748 seconds
+2024-12-14 11:58:16,738 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:16,739 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:16,895 - Analysis - test - DEBUG - Finished embed in 0.15599870681762695 seconds
+2024-12-14 11:58:17,314 - Analysis - test - DEBUG - Finished get_clustering in 0.5749986171722412 seconds
+2024-12-14 11:58:17,316 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:17,318 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:17,490 - Analysis - test - DEBUG - Finished embed in 0.17200326919555664 seconds
+2024-12-14 11:58:18,443 - Analysis - test - DEBUG - Finished get_clustering in 1.1269969940185547 seconds
+2024-12-14 11:58:18,445 - Analysis - test - DEBUG - Starting get_clustering
+2024-12-14 11:58:18,446 - Analysis - test - DEBUG - Starting embed
+2024-12-14 11:58:18,601 - Analysis - test - DEBUG - Finished embed in 0.15500521659851074 seconds
+2024-12-14 11:58:20,390 - Analysis - test - DEBUG - Finished get_clustering in 1.9449999332427979 seconds
+2024-12-14 11:58:20,409 - Analysis - test - DEBUG - Finished create_cluster_dfs in 794.579754114151 seconds
+2024-12-14 11:58:20,415 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,419 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,422 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,425 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,428 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,431 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,444 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,456 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,466 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,477 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,489 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,498 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,507 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,515 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,524 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,533 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,541 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,550 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,554 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,563 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,572 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,581 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,589 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,598 - Analysis - test - WARNING - The length of the evalset and the cluster results are not the same. Taking the intersection.
+2024-12-14 11:58:20,620 - Analysis - test - INFO - Best combination: ('gmm', 'mean', 'UMAP', 30) with accuracy 0.9166666666666666
+2024-12-14 11:58:44,483 - Analysis - test - DEBUG - Finished run_experiments in 844.8234570026398 seconds

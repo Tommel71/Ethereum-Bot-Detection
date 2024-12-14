@@ -5,8 +5,6 @@ import pandas as pd
 from tqdm import tqdm
 from tools import load_json
 import os
-import web3
-from web3 import Web3
 from tools import get_web3
 
 prefix = ".."

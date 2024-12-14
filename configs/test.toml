@@ -1,6 +1,6 @@
 [General]
 run_name = "test"
-PREFIX_DB = "E:/test_data/test_run" # source of data
+PREFIX_DB = "/app/test_data/test_run" # make sure postgres has access rights to this folder. This is made to work with docker. If you use it locally, you can change it to a local path.
 additional_experiments = false
 
 [Plotting]

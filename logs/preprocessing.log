@@ -214,3 +214,272 @@
 2024-03-24 18:08:59,339 - preprocessing - test - DEBUG - Added price data
 2024-03-24 18:08:59,375 - preprocessing - test - DEBUG - Removing codes table
 2024-03-24 18:08:59,381 - preprocessing - test - DEBUG - Codes table removed
+2024-12-14 00:32:06,089 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 00:33:28,299 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 00:36:34,995 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 00:38:25,450 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 00:39:21,117 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 00:41:11,381 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 10:11:42,983 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 10:13:18,952 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 10:16:09,540 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 10:16:09,601 - preprocessing - test - DEBUG - Added blocks to postgres
+2024-12-14 10:16:09,602 - preprocessing - test - DEBUG - Add transactions to postgres
+2024-12-14 10:16:18,454 - preprocessing - test - DEBUG - Added transactions to postgres
+2024-12-14 10:16:18,454 - preprocessing - test - DEBUG - Add logs to postgres
+2024-12-14 10:16:26,875 - preprocessing - test - DEBUG - Added logs to postgres
+2024-12-14 10:16:26,875 - preprocessing - test - DEBUG - Add codes to postgres
+2024-12-14 10:16:26,915 - preprocessing - test - DEBUG - Added codes to postgres
+2024-12-14 10:16:26,940 - preprocessing - test - DEBUG - Add indices
+2024-12-14 10:16:31,722 - preprocessing - test - DEBUG - Added indices
+2024-12-14 10:16:31,722 - preprocessing - test - DEBUG - Logs processing
+2024-12-14 10:16:33,182 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 10:16:45,395 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:16:57,224 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:09,682 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:22,438 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:35,581 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:47,963 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:54,620 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:17:54,632 - preprocessing - test - DEBUG - Logs processed
+2024-12-14 10:17:56,136 - preprocessing - test - DEBUG - Indices created
+2024-12-14 10:17:56,136 - preprocessing - test - DEBUG - Creating function tables
+2024-12-14 10:17:57,648 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 10:18:05,897 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 10:18:17,266 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 10:18:26,705 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 10:18:29,931 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 10:18:29,943 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 10:18:30,199 - preprocessing - test - DEBUG - Indices created
+2024-12-14 10:18:30,221 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 10:18:38,052 - preprocessing - test - DEBUG - Improved transferEth
+2024-12-14 10:18:38,089 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens
+2024-12-14 10:18:38,103 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens_ndl
+2024-12-14 10:18:38,120 - preprocessing - test - DEBUG - Improved swapTokensForExactTokens
+2024-12-14 10:18:38,160 - preprocessing - test - DEBUG - Improved swapExactETHForTokens
+2024-12-14 10:18:38,173 - preprocessing - test - DEBUG - Improved swapTokensForExactETH
+2024-12-14 10:18:38,195 - preprocessing - test - DEBUG - Improved swapExactTokensForETH
+2024-12-14 10:18:38,222 - preprocessing - test - DEBUG - Improved swapETHForExactTokens
+2024-12-14 10:18:38,241 - preprocessing - test - DEBUG - Improved swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:18:38,262 - preprocessing - test - DEBUG - Improved swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:18:38,294 - preprocessing - test - DEBUG - Improved swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 10:18:40,634 - preprocessing - test - DEBUG - Improved multicall
+2024-12-14 10:18:40,649 - preprocessing - test - DEBUG - Improved execute
+2024-12-14 10:18:41,923 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 10:18:41,923 - preprocessing - test - DEBUG - Creating multicall tables
+2024-12-14 10:18:43,360 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 10:18:48,585 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 10:18:48,592 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 10:18:49,053 - preprocessing - test - DEBUG - Indices created
+2024-12-14 10:18:49,099 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 10:18:49,140 - preprocessing - test - DEBUG - Improved multicall_transferEth
+2024-12-14 10:18:49,150 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens
+2024-12-14 10:18:49,381 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens_ndl
+2024-12-14 10:18:49,393 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactTokens
+2024-12-14 10:18:49,403 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokens
+2024-12-14 10:18:49,414 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactETH
+2024-12-14 10:18:49,424 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETH
+2024-12-14 10:18:49,436 - preprocessing - test - DEBUG - Improved multicall_swapETHForExactTokens
+2024-12-14 10:18:49,448 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:18:49,458 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:18:49,468 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 10:18:49,479 - preprocessing - test - DEBUG - Improved multicall_multicall
+2024-12-14 10:18:49,490 - preprocessing - test - DEBUG - Improved multicall_execute
+2024-12-14 10:18:49,513 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 10:18:49,533 - preprocessing - test - DEBUG - Creating accounts table
+2024-12-14 10:19:02,793 - preprocessing - test - DEBUG - Accounts created
+2024-12-14 10:19:02,793 - preprocessing - test - DEBUG - Add foreign keys
+2024-12-14 10:19:04,543 - preprocessing - test - DEBUG - Add foreign key for swap
+2024-12-14 10:19:04,632 - preprocessing - test - DEBUG - Add foreign key for transferErc20
+2024-12-14 10:19:04,906 - preprocessing - test - DEBUG - Add foreign key for swapV3
+2024-12-14 10:19:04,986 - preprocessing - test - DEBUG - Add foreign key for transferEth
+2024-12-14 10:19:05,152 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens
+2024-12-14 10:19:05,192 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens_ndl
+2024-12-14 10:19:05,195 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactTokens
+2024-12-14 10:19:05,198 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokens
+2024-12-14 10:19:05,247 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactETH
+2024-12-14 10:19:05,250 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETH
+2024-12-14 10:19:05,258 - preprocessing - test - DEBUG - Add foreign key for swapETHForExactTokens
+2024-12-14 10:19:05,308 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:19:05,312 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 10:19:05,317 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 10:19:05,362 - preprocessing - test - DEBUG - Add foreign key for multicall
+2024-12-14 10:19:05,363 - preprocessing - test - DEBUG - Add foreign key for execute
+2024-12-14 10:19:05,364 - preprocessing - test - DEBUG - Added foreign keys in 2.57157564163208 seconds
+2024-12-14 10:19:05,364 - preprocessing - test - DEBUG - Adding price data
+2024-12-14 10:57:33,707 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 10:57:34,313 - preprocessing - test - DEBUG - Added blocks to postgres
+2024-12-14 10:57:34,313 - preprocessing - test - DEBUG - Add transactions to postgres
+2024-12-14 10:57:56,732 - preprocessing - test - DEBUG - Added transactions to postgres
+2024-12-14 10:57:56,732 - preprocessing - test - DEBUG - Add logs to postgres
+2024-12-14 10:58:19,776 - preprocessing - test - DEBUG - Added logs to postgres
+2024-12-14 10:58:19,777 - preprocessing - test - DEBUG - Add codes to postgres
+2024-12-14 10:58:19,840 - preprocessing - test - DEBUG - Added codes to postgres
+2024-12-14 10:58:19,877 - preprocessing - test - DEBUG - Add indices
+2024-12-14 10:58:27,191 - preprocessing - test - DEBUG - Added indices
+2024-12-14 10:58:27,191 - preprocessing - test - DEBUG - Logs processing
+2024-12-14 10:58:28,710 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 10:58:45,239 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:58:59,077 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:59:13,049 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:59:27,084 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:59:40,440 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 10:59:52,592 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:00:02,932 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:00:02,944 - preprocessing - test - DEBUG - Logs processed
+2024-12-14 11:00:06,456 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:00:06,456 - preprocessing - test - DEBUG - Creating function tables
+2024-12-14 11:00:07,926 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 11:00:15,248 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:00:22,768 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:00:30,545 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:00:33,771 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:00:33,784 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 11:00:34,040 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:00:34,068 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 11:00:38,938 - preprocessing - test - DEBUG - Improved transferEth
+2024-12-14 11:00:39,258 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens
+2024-12-14 11:00:39,277 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens_ndl
+2024-12-14 11:00:39,302 - preprocessing - test - DEBUG - Improved swapTokensForExactTokens
+2024-12-14 11:00:41,061 - preprocessing - test - DEBUG - Improved swapExactETHForTokens
+2024-12-14 11:00:41,670 - preprocessing - test - DEBUG - Improved swapTokensForExactETH
+2024-12-14 11:00:42,074 - preprocessing - test - DEBUG - Improved swapExactTokensForETH
+2024-12-14 11:00:42,651 - preprocessing - test - DEBUG - Improved swapETHForExactTokens
+2024-12-14 11:00:43,174 - preprocessing - test - DEBUG - Improved swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:00:44,045 - preprocessing - test - DEBUG - Improved swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:00:45,409 - preprocessing - test - DEBUG - Improved swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:00:47,145 - preprocessing - test - DEBUG - Improved multicall
+2024-12-14 11:00:47,156 - preprocessing - test - DEBUG - Improved execute
+2024-12-14 11:00:47,341 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 11:00:47,342 - preprocessing - test - DEBUG - Creating multicall tables
+2024-12-14 11:00:48,890 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 11:00:53,725 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:00:53,730 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 11:00:53,794 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:00:53,835 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 11:00:53,875 - preprocessing - test - DEBUG - Improved multicall_transferEth
+2024-12-14 11:00:53,886 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens
+2024-12-14 11:00:54,130 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens_ndl
+2024-12-14 11:00:54,142 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactTokens
+2024-12-14 11:00:54,153 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokens
+2024-12-14 11:00:54,164 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactETH
+2024-12-14 11:00:54,175 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETH
+2024-12-14 11:00:54,186 - preprocessing - test - DEBUG - Improved multicall_swapETHForExactTokens
+2024-12-14 11:00:54,197 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:00:54,208 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:00:54,219 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:00:54,230 - preprocessing - test - DEBUG - Improved multicall_multicall
+2024-12-14 11:00:54,241 - preprocessing - test - DEBUG - Improved multicall_execute
+2024-12-14 11:00:54,265 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 11:00:54,286 - preprocessing - test - DEBUG - Creating accounts table
+2024-12-14 11:00:59,771 - preprocessing - test - DEBUG - Accounts created
+2024-12-14 11:00:59,771 - preprocessing - test - DEBUG - Add foreign keys
+2024-12-14 11:01:01,542 - preprocessing - test - DEBUG - Add foreign key for swap
+2024-12-14 11:01:01,639 - preprocessing - test - DEBUG - Add foreign key for transferErc20
+2024-12-14 11:01:01,908 - preprocessing - test - DEBUG - Add foreign key for swapV3
+2024-12-14 11:01:02,002 - preprocessing - test - DEBUG - Add foreign key for transferEth
+2024-12-14 11:01:02,170 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens
+2024-12-14 11:01:02,214 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens_ndl
+2024-12-14 11:01:02,216 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactTokens
+2024-12-14 11:01:02,220 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokens
+2024-12-14 11:01:02,267 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactETH
+2024-12-14 11:01:02,269 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETH
+2024-12-14 11:01:02,276 - preprocessing - test - DEBUG - Add foreign key for swapETHForExactTokens
+2024-12-14 11:01:02,317 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:01:02,321 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:01:02,326 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:01:02,365 - preprocessing - test - DEBUG - Add foreign key for multicall
+2024-12-14 11:01:02,365 - preprocessing - test - DEBUG - Add foreign key for execute
+2024-12-14 11:01:02,366 - preprocessing - test - DEBUG - Added foreign keys in 2.5950396060943604 seconds
+2024-12-14 11:01:02,366 - preprocessing - test - DEBUG - Adding price data
+2024-12-14 11:01:02,887 - preprocessing - test - DEBUG - Added price data
+2024-12-14 11:01:02,913 - preprocessing - test - DEBUG - Removing codes table
+2024-12-14 11:01:02,918 - preprocessing - test - DEBUG - Codes table removed
+2024-12-14 11:06:42,540 - preprocessing - test - DEBUG - Add blocks to postgres
+2024-12-14 11:06:43,042 - preprocessing - test - DEBUG - Added blocks to postgres
+2024-12-14 11:06:43,042 - preprocessing - test - DEBUG - Add transactions to postgres
+2024-12-14 11:06:57,553 - preprocessing - test - DEBUG - Added transactions to postgres
+2024-12-14 11:06:57,553 - preprocessing - test - DEBUG - Add logs to postgres
+2024-12-14 11:07:21,142 - preprocessing - test - DEBUG - Added logs to postgres
+2024-12-14 11:07:21,142 - preprocessing - test - DEBUG - Add codes to postgres
+2024-12-14 11:07:21,223 - preprocessing - test - DEBUG - Added codes to postgres
+2024-12-14 11:07:21,247 - preprocessing - test - DEBUG - Add indices
+2024-12-14 11:07:34,341 - preprocessing - test - DEBUG - Added indices
+2024-12-14 11:07:34,342 - preprocessing - test - DEBUG - Logs processing
+2024-12-14 11:07:35,745 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 11:07:46,945 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:07:58,158 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:08:10,670 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:08:23,320 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:08:42,833 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:08:53,882 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:09:00,159 - preprocessing - test - DEBUG - Processed 100000 logs
+2024-12-14 11:09:00,171 - preprocessing - test - DEBUG - Logs processed
+2024-12-14 11:09:03,558 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:09:03,558 - preprocessing - test - DEBUG - Creating function tables
+2024-12-14 11:09:05,024 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 11:09:11,775 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:09:19,010 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:09:26,532 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:09:29,854 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:09:29,865 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 11:09:30,120 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:09:30,145 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 11:09:42,470 - preprocessing - test - DEBUG - Improved transferEth
+2024-12-14 11:09:42,505 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens
+2024-12-14 11:09:42,518 - preprocessing - test - DEBUG - Improved swapExactTokensForTokens_ndl
+2024-12-14 11:09:42,535 - preprocessing - test - DEBUG - Improved swapTokensForExactTokens
+2024-12-14 11:09:42,576 - preprocessing - test - DEBUG - Improved swapExactETHForTokens
+2024-12-14 11:09:42,589 - preprocessing - test - DEBUG - Improved swapTokensForExactETH
+2024-12-14 11:09:42,610 - preprocessing - test - DEBUG - Improved swapExactTokensForETH
+2024-12-14 11:09:42,637 - preprocessing - test - DEBUG - Improved swapETHForExactTokens
+2024-12-14 11:09:42,657 - preprocessing - test - DEBUG - Improved swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:42,677 - preprocessing - test - DEBUG - Improved swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:42,713 - preprocessing - test - DEBUG - Improved swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:09:43,910 - preprocessing - test - DEBUG - Improved multicall
+2024-12-14 11:09:43,921 - preprocessing - test - DEBUG - Improved execute
+2024-12-14 11:09:44,098 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 11:09:44,098 - preprocessing - test - DEBUG - Creating multicall tables
+2024-12-14 11:09:45,504 - preprocessing - test - DEBUG - Postgres: CREATE TABLE
+2024-12-14 11:09:50,200 - preprocessing - test - DEBUG - Processed 100000 transactions
+2024-12-14 11:09:50,206 - preprocessing - test - DEBUG - Transactions processed
+2024-12-14 11:09:50,269 - preprocessing - test - DEBUG - Indices created
+2024-12-14 11:09:50,311 - preprocessing - test - DEBUG - Improving function tables
+2024-12-14 11:09:50,351 - preprocessing - test - DEBUG - Improved multicall_transferEth
+2024-12-14 11:09:50,362 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens
+2024-12-14 11:09:50,598 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokens_ndl
+2024-12-14 11:09:50,610 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactTokens
+2024-12-14 11:09:50,621 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokens
+2024-12-14 11:09:50,631 - preprocessing - test - DEBUG - Improved multicall_swapTokensForExactETH
+2024-12-14 11:09:50,641 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETH
+2024-12-14 11:09:50,652 - preprocessing - test - DEBUG - Improved multicall_swapETHForExactTokens
+2024-12-14 11:09:50,662 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:50,673 - preprocessing - test - DEBUG - Improved multicall_swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:50,684 - preprocessing - test - DEBUG - Improved multicall_swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:09:50,695 - preprocessing - test - DEBUG - Improved multicall_multicall
+2024-12-14 11:09:50,706 - preprocessing - test - DEBUG - Improved multicall_execute
+2024-12-14 11:09:50,731 - preprocessing - test - DEBUG - function tables improved
+2024-12-14 11:09:50,760 - preprocessing - test - DEBUG - Creating accounts table
+2024-12-14 11:09:56,128 - preprocessing - test - DEBUG - Accounts created
+2024-12-14 11:09:56,129 - preprocessing - test - DEBUG - Add foreign keys
+2024-12-14 11:09:57,861 - preprocessing - test - DEBUG - Add foreign key for swap
+2024-12-14 11:09:57,950 - preprocessing - test - DEBUG - Add foreign key for transferErc20
+2024-12-14 11:09:58,209 - preprocessing - test - DEBUG - Add foreign key for swapV3
+2024-12-14 11:09:58,292 - preprocessing - test - DEBUG - Add foreign key for transferEth
+2024-12-14 11:09:58,446 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens
+2024-12-14 11:09:58,485 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokens_ndl
+2024-12-14 11:09:58,488 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactTokens
+2024-12-14 11:09:58,490 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokens
+2024-12-14 11:09:58,528 - preprocessing - test - DEBUG - Add foreign key for swapTokensForExactETH
+2024-12-14 11:09:58,530 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETH
+2024-12-14 11:09:58,537 - preprocessing - test - DEBUG - Add foreign key for swapETHForExactTokens
+2024-12-14 11:09:58,576 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:58,581 - preprocessing - test - DEBUG - Add foreign key for swapExactETHForTokensSupportingFeeOnTransferTokens
+2024-12-14 11:09:58,585 - preprocessing - test - DEBUG - Add foreign key for swapExactTokensForETHSupportingFeeOnTransferTokens
+2024-12-14 11:09:58,625 - preprocessing - test - DEBUG - Add foreign key for multicall
+2024-12-14 11:09:58,626 - preprocessing - test - DEBUG - Add foreign key for execute
+2024-12-14 11:09:58,627 - preprocessing - test - DEBUG - Added foreign keys in 2.498548746109009 seconds
+2024-12-14 11:09:58,627 - preprocessing - test - DEBUG - Adding price data
+2024-12-14 11:09:59,053 - preprocessing - test - DEBUG - Added price data
+2024-12-14 11:09:59,074 - preprocessing - test - DEBUG - Removing codes table
+2024-12-14 11:09:59,079 - preprocessing - test - DEBUG - Codes table removed

@@ -1,7 +1,6 @@
 # query etherscan data and check the usage around the day
 import pandas as pd
 import requests
-from matplotlib import pyplot as plt
 import time
 prefix = "."
 addresses = pd.read_csv(prefix + "/data/wallets_to_annotate.csv", header=None)[0].values

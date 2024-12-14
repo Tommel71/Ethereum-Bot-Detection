@@ -11,28 +11,34 @@ Note that the methods used in this paper are compute intensive for a single PC a
 On an AMD Ryzen 5 2600 Six-Core Processor (3.4 GHz) with 64GB of RAM, the code takes about 24 hours to run and in
 addition to the results produced for the paper, several other tables and figures are generated.
 
+
+
+# Minimal Example
+
+We provide two types to run the pipeline with a reduced dataset. To run it with more data acquire more using `graphsense-lib`
+and adjust the `PREFIX_DB` in `configs/test.toml` to the folder containing the raw data.
+
+## Docker
+
+Use docker compose to start the pipeline on the provided test data.
+
+`docker-compose up`
+
+## Local
+
 ### How to install
 This repository has only been tested on Windows 10 but may also work on Linux distributions.
 
 - install miktex and add the `...\MiKTeX\miktex\bin\x64\` folder to the path
 - install `postgres 15.1` and adjust the `pg_hba.conf` file as laid out here:  https://stackoverflow.com/questions/64210167/unable-to-connect-to-postgres-db-due-to-the-authentication-type-10-is-not-suppor
 
-To install the required python packages use the following commands
+We use `uv` for dependency management. Run the following commands to install the dependencies
 
 ```
-python -m venv .venv
-.venv/Scripts/activate source 
-pip install requirements.txt
-```
-or on Linux (untested)
-```
-python -m venv .venv
-source .venv/bin/activate
-pip install requirements.txt
+uv python install 3.10
+uv sync
 ```
 
-
-### Minimal Example
 
 ##### Setup
 To use this repository block, transaction, and log data (enriched as provided by graphsense-lib) are required

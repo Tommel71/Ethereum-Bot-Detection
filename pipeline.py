@@ -4,7 +4,7 @@ Pipeline that does everything from data processing to training to evaluating and
 Note that some features such as fetching asset prices
 are only relevant for my Masterthesis and not required for the paper.
 """
-from tools import load_configs, set_configs, load_plotting_settings_static
+from tools import load_configs, set_configs
 from src.Labeling import annotation_single, process_labeling
 from src.Preprocessing.populate_postgres import Preprocess
 from src.Aggregate import Aggregate

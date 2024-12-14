@@ -1,6 +1,6 @@
 [General]
 run_name = "test"
-PREFIX_DB = "E:/test_data/test_run" # source of data
+PREFIX_DB = "C:/Users/Public/test_data/test_run" # make sure postgres has access rights to this folder
 additional_experiments = false
 
 [Plotting]

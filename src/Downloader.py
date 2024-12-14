@@ -5,15 +5,12 @@
   """
 
 from tools import load_json, save_text
-from web3 import Web3
-from typing import List
-import asyncio, time
+import time
 import pymongo
 import pandas as pd
-from tools import load_configs, flatten
+from tools import load_configs
 import requests
 from tqdm import tqdm
-import concurrent.futures
 
 class DownloadPipeline:
 

@@ -128,10 +128,8 @@ def get_scores(pipeline, X, y, classes, multiclass=False, negative_classes=("hum
         y_train, y_test = y[train_idx], y[test_idx]
 
         pipeline.fit(X_train, y_train)
-        try:
-            y_pred = pipeline.predict(X_test)
-        except:
-            pass
+        y_pred = pipeline.predict(X_test)
+
         if multiclass:
             data += [
                 {
