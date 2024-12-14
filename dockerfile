@@ -1,7 +1,6 @@
-# Use a Python base image
 FROM ghcr.io/astral-sh/uv:bookworm-slim
 
-# Install system dependencies, including Python
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     build-essential \

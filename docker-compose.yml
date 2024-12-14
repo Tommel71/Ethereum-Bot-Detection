@@ -4,6 +4,7 @@ services:
     volumes:
       - .:/app
       - ./test_data:/test_data
+      - ./outputs:/outputs
     depends_on:
       - db
 
