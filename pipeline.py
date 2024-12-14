@@ -296,11 +296,6 @@ class FinalPipeline(PipelineComponent):
 
 if __name__ == "__main__":
     prefix = "."
-
-    # write to current dir a txt file
-    with open("outputs/current_dir.txt", "w") as f:
-        f.write("test")
-
     set_configs(main_sample, prefix)
     configs_1 = load_configs(prefix)
     finalpipeline = FinalPipeline(configs_1, prefix)
