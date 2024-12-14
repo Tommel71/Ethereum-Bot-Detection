@@ -24,6 +24,9 @@ Use docker compose to start the pipeline on the provided test data.
 
 `docker-compose up`
 
+Running this may take some time. In the end, the results will be saved in the `output` folder.
+
+
 ## Local
 
 ### How to install
@@ -44,7 +47,7 @@ uv sync
 To use this repository block, transaction, and log data (enriched as provided by graphsense-lib) are required
 
 To use it, point `PREFIX_DB` in `configs/test.toml` to the folder containing the raw data as demonstrated in 
-a test sample provided in `test_data/test_run`.
+a test sample provided in `test_data/test_run`. Change the `credentials/postgres/test.json` file `host` variable to localhost.
 
 Furthermore, a trace_creations.csv file is required that contains all addresses that should be marked as a smart contract
 A minimal example is also provided in `test_data/codes`. Note that the content of the output column is not of central

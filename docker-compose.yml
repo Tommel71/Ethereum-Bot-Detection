@@ -3,6 +3,7 @@ services:
     build: .
     volumes:
       - .:/app
+      - ./test_data:/test_data
     depends_on:
       - db
 
@@ -13,8 +14,10 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: test
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
+      - ./test_data:/test_data
 volumes:
   postgres_data:
